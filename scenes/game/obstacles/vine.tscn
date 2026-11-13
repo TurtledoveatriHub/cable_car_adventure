@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://bg6ncidokw8g7"]
+
+[ext_resource type="Script" uid="uid://3sptxkf8oldo" path="res://scripts/game/obstacles/obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b1sd3684n68u0" path="res://assets/visuals/obstacles/vine.png" id="2_qe1vw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0buy"]
+atlas = ExtResource("2_qe1vw")
+region = Rect2(0, 0, 112, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32pbb"]
+atlas = ExtResource("2_qe1vw")
+region = Rect2(0, 0, 112, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0buy")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32pbb")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"off",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vrjff"]
+radius = 51.0
+
+[node name="VineObstacle" type="Area2D" groups=["obstacles"]]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_script")
+prefab_id = "vine"
+display_name = "松树"
+obstacle_type = "crate"
+movement_mode = 2
+move_speed_out = 540.0
+move_speed_back = 540.0
+end_offset = Vector2(1440, 0)
+start_wait_time = 0.8
+end_wait_time = 0.8
+acceleration_time = 1.0
+deceleration_time = 1.0
+wave_amplitude = 480.0
+wave_period = 0.5
+wave_start_up = false
+wave_reverse_on_return = false
+rotation_enabled = true
+rotation_speed = 540.0
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_vrjff")

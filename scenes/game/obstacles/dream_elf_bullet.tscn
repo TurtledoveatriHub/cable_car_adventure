@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b02eu8qufuug4"]
+
+[ext_resource type="Script" uid="uid://b5f36cu4jug5o" path="res://scripts/game/obstacles/obstacle_bullet.gd" id="1_y3fxe"]
+[ext_resource type="Texture2D" uid="uid://cafyfk17hrwj0" path="res://assets/visuals/obstacles/snow_elf_bullet.png" id="2_al50s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ddqr"]
+size = Vector2(60, 60)
+
+[node name="ObstacleBullet" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_y3fxe")
+speed = 180.0
+life_time = 6.0
+affected_by_gravity = true
+bullet_gravity = 960.0
+gravity_delay = 3.6
+acceleration_time = 0.5
+curve_acceleration_enabled = true
+rotation_speed = 180.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1.8247963, 0.5775381, 1.4506186, 1)
+scale = Vector2(5, 5)
+texture = ExtResource("2_al50s")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_7ddqr")

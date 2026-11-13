@@ -1,0 +1,228 @@
+[gd_scene load_steps=4 format=3 uid="uid://8h2keld2rh6t"]
+
+[ext_resource type="Script" uid="uid://cb0fnyptolk51" path="res://scripts/ui/leaderboard_screen.gd" id="1_leaderboard"]
+[ext_resource type="Script" uid="uid://bs3a783qbdxjs" path="res://scripts/ui/sky_backdrop.gd" id="2_backdrop"]
+[ext_resource type="Script" path="res://scripts/ui/touch_scroll.gd" id="3_scroll_touch"]
+
+[node name="Leaderboard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_leaderboard")
+
+[node name="BackdropLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="SkyBackdrop" type="Control" parent="BackdropLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_backdrop")
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 80
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 80
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="Content/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="BackButton" type="Button" parent="Content/VBox/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 46)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "← 返回"
+
+[node name="TitleBox" type="VBoxContainer" parent="Content/VBox/Header"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="Content/VBox/Header/TitleBox"]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+theme_override_font_sizes/font_size = 52
+text = "轨道名人堂"
+
+[node name="Subtitle" type="Label" parent="Content/VBox/Header/TitleBox"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 17
+text = "第一保证乘客安全，用时次之。"
+
+[node name="Spacer" type="Control" parent="Content/VBox/Header"]
+custom_minimum_size = Vector2(160, 0)
+layout_mode = 2
+
+[node name="CurrentBox" type="VBoxContainer" parent="Content/VBox/Header"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Content/VBox/Header/CurrentBox"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 13
+text = "当前榜单"
+
+[node name="SelectedLevelLabel" type="Label" parent="Content/VBox/Header/CurrentBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+theme_override_font_sizes/font_size = 20
+text = "晴空初旅"
+
+[node name="PickerBox" type="VBoxContainer" parent="Content/VBox/Header"]
+layout_mode = 2
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Content/VBox/Header/PickerBox"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 13
+text = "查看关卡"
+
+[node name="LevelPicker" type="OptionButton" parent="Content/VBox/Header/PickerBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(210, 44)
+layout_mode = 2
+
+[node name="RefreshButton" type="Button" parent="Content/VBox/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 4
+tooltip_text = "刷新榜单"
+theme_type_variation = &"IconButton"
+theme_override_font_sizes/font_size = 17
+text = "刷新"
+
+[node name="TablePanel" type="PanelContainer" parent="Content/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"PaperPanel"
+
+[node name="TableVBox" type="VBoxContainer" parent="Content/VBox/TablePanel"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TableHeader" type="HBoxContainer" parent="Content/VBox/TablePanel/TableVBox"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Rank" type="Label" parent="Content/VBox/TablePanel/TableVBox/TableHeader"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 14
+text = "名次"
+horizontal_alignment = 1
+
+[node name="Driver" type="Label" parent="Content/VBox/TablePanel/TableVBox/TableHeader"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 14
+text = "车手"
+
+[node name="Cart" type="Label" parent="Content/VBox/TablePanel/TableVBox/TableHeader"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+text = "使用缆车"
+horizontal_alignment = 1
+
+[node name="Passengers" type="Label" parent="Content/VBox/TablePanel/TableVBox/TableHeader"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 14
+text = "丢失乘客"
+horizontal_alignment = 1
+
+[node name="Time" type="Label" parent="Content/VBox/TablePanel/TableVBox/TableHeader"]
+custom_minimum_size = Vector2(140, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 14
+text = "通关用时"
+horizontal_alignment = 1
+
+[node name="HeaderLine" type="ColorRect" parent="Content/VBox/TablePanel/TableVBox"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.106, 0.196, 0.282, 0.16)
+
+[node name="LoadingLabel" type="Label" parent="Content/VBox/TablePanel/TableVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BodyLabel"
+theme_override_font_sizes/font_size = 18
+text = "正在读取轨道成绩…"
+horizontal_alignment = 1
+
+[node name="ErrorLabel" type="Label" parent="Content/VBox/TablePanel/TableVBox"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(200, 10)
+layout_mode = 2
+theme_type_variation = &"DangerLabel"
+theme_override_font_sizes/font_size = 17
+text = "排行榜加载失败"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Scroll" type="ScrollContainer" parent="Content/VBox/TablePanel/TableVBox"]
+script = ExtResource("3_scroll_touch")
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="Rows" type="VBoxContainer" parent="Content/VBox/TablePanel/TableVBox/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="Footer" type="HBoxContainer" parent="Content/VBox"]
+layout_mode = 2
+
+[node name="ProviderLabel" type="Label" parent="Content/VBox/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 14
+text = "数据源：本地真实成绩 · 接口可替换为云端"
+
+[node name="Spacer2" type="Control" parent="Content/VBox/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Note" type="Label" parent="Content/VBox/Footer"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 14
+text = "本地真实成绩 · 只有实际游玩记录"
+horizontal_alignment = 2

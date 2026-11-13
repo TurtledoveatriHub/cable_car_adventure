@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="VisualAssets" load_steps=5 format=3 uid="uid://dtahlhjgequld"]
+
+[ext_resource type="Script" uid="uid://c7aw3gnqrk267" path="res://scripts/game/visual_assets.gd" id="1_visual"]
+[ext_resource type="Texture2D" uid="uid://bl87xnceh3arb" path="res://assets/visuals/generated/rail.png" id="2_rail"]
+[ext_resource type="Texture2D" uid="uid://ce24jphbvip8b" path="res://assets/visuals/generated/start_gate.png" id="3_start"]
+[ext_resource type="Texture2D" uid="uid://r316q6lqpxf3" path="res://assets/visuals/generated/finish_gate.png" id="4_finish"]
+
+[resource]
+script = ExtResource("1_visual")
+track_texture = ExtResource("2_rail")
+start_gate_texture = ExtResource("3_start")
+finish_gate_texture = ExtResource("4_finish")

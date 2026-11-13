@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PassengerProfile" load_steps=3 format=3 uid="uid://met6x4f37dl4"]
+
+[ext_resource type="Script" uid="uid://dsgkbgc6x20ab" path="res://scripts/data/passenger_profile.gd" id="1_profile"]
+[ext_resource type="Texture2D" uid="uid://bikejxotf3kbx" path="res://assets/visuals/passengers/passenger_7.png" id="2_texture"]
+
+[resource]
+script = ExtResource("1_profile")
+id = "passenger_7"
+display_name = "乘客007"
+texture = ExtResource("2_texture")

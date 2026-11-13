@@ -1,0 +1,268 @@
+[gd_scene load_steps=5 format=3 uid="uid://du3mkroohgydx"]
+
+[ext_resource type="Script" uid="uid://cr1b1y0tbeek" path="res://scripts/ui/game_hud.gd" id="1_hud"]
+[ext_resource type="Script" uid="uid://dkv1jdwc8hcdu" path="res://scripts/ui/passenger_meter.gd" id="2_meter"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_progress_bg"]
+bg_color = Color(0.05, 0.11, 0.17, 0.7)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBox_progress_fill"]
+bg_color = Color(1, 0.824, 0.247, 1)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[node name="GameHUD" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_hud")
+
+[node name="TopMargin" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 128.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 14
+
+[node name="TopRow" type="HBoxContainer" parent="TopMargin"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="P1Card" type="PanelContainer" parent="TopMargin/TopRow"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_type_variation = &"HudPanel"
+
+[node name="P1VBox" type="VBoxContainer" parent="TopMargin/TopRow/P1Card"]
+layout_mode = 2
+
+[node name="P1Meter" type="Control" parent="TopMargin/TopRow/P1Card/P1VBox"]
+custom_minimum_size = Vector2(260, 40)
+layout_mode = 2
+script = ExtResource("2_meter")
+
+[node name="P1TimeLabel" type="Label" parent="TopMargin/TopRow/P1Card/P1VBox"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 24
+text = "00:00.00"
+
+[node name="P1Progress" type="ProgressBar" parent="TopMargin/TopRow/P1Card/P1VBox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBox_progress_bg")
+theme_override_styles/fill = SubResource("StyleBox_progress_fill")
+show_percentage = false
+
+[node name="CenterBox" type="VBoxContainer" parent="TopMargin/TopRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme_override_constants/separation = 2
+alignment = 1
+
+[node name="LevelLabel" type="Label" parent="TopMargin/TopRow/CenterBox"]
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+theme_override_font_sizes/font_size = 32
+text = "晴空初旅                      "
+horizontal_alignment = 1
+
+[node name="P2Card" type="PanelContainer" parent="TopMargin/TopRow"]
+visible = false
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+theme_type_variation = &"HudPanel"
+
+[node name="P2VBox" type="VBoxContainer" parent="TopMargin/TopRow/P2Card"]
+layout_mode = 2
+
+[node name="P2Meter" type="Control" parent="TopMargin/TopRow/P2Card/P2VBox"]
+custom_minimum_size = Vector2(260, 40)
+layout_mode = 2
+script = ExtResource("2_meter")
+
+[node name="P2TimeLabel" type="Label" parent="TopMargin/TopRow/P2Card/P2VBox"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 24
+text = "00:00.00"
+
+[node name="P2Progress" type="ProgressBar" parent="TopMargin/TopRow/P2Card/P2VBox"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBox_progress_bg")
+theme_override_styles/fill = SubResource("StyleBox_progress_fill")
+show_percentage = false
+
+[node name="ActionBox" type="HBoxContainer" parent="TopMargin/TopRow"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="MuteButton" type="Button" parent="TopMargin/TopRow/ActionBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 8
+tooltip_text = "音乐开关"
+theme_type_variation = &"IconButton"
+text = "♪"
+
+[node name="PauseButton" type="Button" parent="TopMargin/TopRow/ActionBox"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_vertical = 8
+tooltip_text = "暂停 (Esc)"
+theme_type_variation = &"IconButton"
+text = "Ⅱ"
+
+[node name="CountdownLayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CountdownCenter" type="CenterContainer" parent="CountdownLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="CountdownVBox" type="VBoxContainer" parent="CountdownLayer/CountdownCenter"]
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="CountdownLabel" type="Label" parent="CountdownLayer/CountdownCenter/CountdownVBox"]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+theme_override_font_sizes/font_size = 200
+text = "3"
+horizontal_alignment = 1
+
+[node name="CountdownSub" type="Label" parent="CountdownLayer/CountdownCenter/CountdownVBox"]
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+theme_override_font_sizes/font_size = 22
+text = "← 刹车 / 后退 → 加速前进  "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ToastLayer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 180.0
+offset_bottom = 270.0
+grow_horizontal = 2
+mouse_filter = 2
+
+[node name="ToastCenter" type="CenterContainer" parent="ToastLayer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -12.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ToastPanel" type="PanelContainer" parent="ToastLayer/ToastCenter"]
+layout_mode = 2
+mouse_filter = 2
+theme_type_variation = &"ToastPanel"
+
+[node name="ToastLabel" type="Label" parent="ToastLayer/ToastCenter/ToastPanel"]
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+theme_override_font_sizes/font_size = 30
+text = "准备出发！"
+horizontal_alignment = 1
+
+[node name="PauseOverlay" type="Control" parent="."]
+process_mode = 3
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="PauseOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.09, 0.14, 0.74)
+
+[node name="PauseCenter" type="CenterContainer" parent="PauseOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseCard" type="PanelContainer" parent="PauseOverlay/PauseCenter"]
+custom_minimum_size = Vector2(380, 0)
+layout_mode = 2
+theme_type_variation = &"PaperPanel"
+
+[node name="PauseVBox" type="VBoxContainer" parent="PauseOverlay/PauseCenter/PauseCard"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="PauseTitle" type="Label" parent="PauseOverlay/PauseCenter/PauseCard/PauseVBox"]
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+theme_override_font_sizes/font_size = 38
+text = "暂停中"
+horizontal_alignment = 1
+
+[node name="PauseTip" type="Label" parent="PauseOverlay/PauseCenter/PauseCard/PauseVBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+text = "喝口水，看看风景。"
+horizontal_alignment = 1
+
+[node name="ResumeButton" type="Button" parent="PauseOverlay/PauseCenter/PauseCard/PauseVBox"]
+custom_minimum_size = Vector2(0, 54)
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+text = "继续驾驶"
+
+[node name="RestartButton" type="Button" parent="PauseOverlay/PauseCenter/PauseCard/PauseVBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_type_variation = &"SecondaryButton"
+text = "重新开始"
+
+[node name="QuitButton" type="Button" parent="PauseOverlay/PauseCenter/PauseCard/PauseVBox"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "返回选关"

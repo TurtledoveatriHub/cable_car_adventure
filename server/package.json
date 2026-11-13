@@ -1,0 +1,22 @@
+{
+  "name": "cablecar-wechat-server",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "CableCarAdventure 微信小游戏登录、UGC 关卡广场、遥测与资源下载后端",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js",
+    "test": "node --test test",
+    "seed:demo": "node scripts/seed_demo.js --reset"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.10.0",
+    "cors": "^2.8.6",
+    "dotenv": "^16.4.7",
+    "express": "^5.1.0"
+  }
+}

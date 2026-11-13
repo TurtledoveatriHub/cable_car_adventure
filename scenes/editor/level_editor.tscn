@@ -1,0 +1,593 @@
+[gd_scene load_steps=6 format=3 uid="uid://dq06t1ygtkmnm"]
+
+[ext_resource type="Script" uid="uid://cv04iesasyvav" path="res://scripts/editor/level_editor.gd" id="1_editor"]
+[ext_resource type="Script" uid="uid://u17bdoy43vfj" path="res://scripts/game/track_renderer.gd" id="2_track"]
+[ext_resource type="Script" uid="uid://ko50sssvooc" path="res://scripts/editor/editor_overlay.gd" id="3_overlay"]
+[ext_resource type="Script" uid="uid://bs3a783qbdxjs" path="res://scripts/ui/sky_backdrop.gd" id="4_backdrop"]
+[ext_resource type="Script" uid="uid://p1mmpjhk2x06" path="res://scripts/ui/touch_scroll.gd" id="5_touch_scroll"]
+
+[node name="LevelEditor" type="Node2D"]
+script = ExtResource("1_editor")
+
+[node name="BackdropLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="SkyBackdrop" type="Control" parent="BackdropLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_backdrop")
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="TrackView" type="Node2D" parent="World"]
+script = ExtResource("2_track")
+
+[node name="Overlay" type="Node2D" parent="World"]
+script = ExtResource("3_overlay")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+process_callback = 0
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="Root" type="Control" parent="UILayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TopBar" type="PanelContainer" parent="UILayer/Root"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 18.0
+offset_top = 14.0
+offset_right = -18.0
+offset_bottom = 82.0
+grow_horizontal = 2
+theme_type_variation = &"PaperPanel"
+
+[node name="HBox" type="HBoxContainer" parent="UILayer/Root/TopBar"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="BackButton" type="Button" parent="UILayer/Root/TopBar/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 44)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "← 主菜单"
+
+[node name="Title" type="Label" parent="UILayer/Root/TopBar/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+theme_override_font_sizes/font_size = 24
+text = "关卡创意工坊"
+
+[node name="Spacer" type="Control" parent="UILayer/Root/TopBar/HBox"]
+custom_minimum_size = Vector2(152, 0)
+layout_mode = 2
+
+[node name="BackgroundLabel" type="Label" parent="UILayer/Root/TopBar/HBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 12
+text = "背景"
+
+[node name="BackgroundOption" type="OptionButton" parent="UILayer/Root/TopBar/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(106, 42)
+layout_mode = 2
+tooltip_text = "背景大场景（乐园/雪山/云层/梦境）"
+
+[node name="StyleLabel" type="Label" parent="UILayer/Root/TopBar/HBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 12
+text = "风格"
+
+[node name="ThemeOption" type="OptionButton" parent="UILayer/Root/TopBar/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(110, 42)
+layout_mode = 2
+tooltip_text = "风格（晴空/黄昏/星夜…）"
+
+[node name="SaveButton" type="Button" parent="UILayer/Root/TopBar/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 44)
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+text = "保存"
+
+[node name="TestButton" type="Button" parent="UILayer/Root/TopBar/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(82, 44)
+layout_mode = 2
+theme_type_variation = &"SecondaryButton"
+text = "试玩"
+
+[node name="CollapseButton" type="Button" parent="UILayer/Root/TopBar/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(118, 44)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "整体收起"
+
+[node name="ContentMargin" type="MarginContainer" parent="UILayer/Root"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 104.0
+offset_bottom = -58.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_right = 18
+
+[node name="Workspace" type="HBoxContainer" parent="UILayer/Root/ContentMargin"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 14
+
+[node name="LeftPanel" type="PanelContainer" parent="UILayer/Root/ContentMargin/Workspace"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(292, 0)
+layout_mode = 2
+theme_type_variation = &"PaperPanel"
+
+[node name="LeftScroll" type="ScrollContainer" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("5_touch_scroll")
+
+[node name="LeftVBox" type="VBoxContainer" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 2
+
+[node name="PlaceToggle" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "v 放置缆线"
+alignment = 0
+
+[node name="AddGrid" type="GridContainer" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="StraightButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/AddGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SecondaryButton"
+text = "直线"
+
+[node name="Curve15Button" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/AddGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SecondaryButton"
+text = "15°曲线"
+
+[node name="Curve30Button" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/AddGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SecondaryButton"
+text = "30°曲线"
+
+[node name="Curve45Button" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/AddGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SecondaryButton"
+text = "45°曲线"
+
+[node name="Curve60Button" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/AddGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SecondaryButton"
+text = "60°曲线"
+
+[node name="LoopButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/AddGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SecondaryButton"
+text = "圆环"
+
+[node name="PlaceLengthRow" type="HBoxContainer" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/PlaceLengthRow"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 14
+text = "轨道长度"
+
+[node name="PlaceLengthSpin" type="SpinBox" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/PlaceLengthRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 3000.0
+value = 240.0
+rounded = true
+
+[node name="TransformRow" type="HBoxContainer" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+layout_mode = 2
+theme_override_constants/separation = 5
+
+[node name="FlipButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/TransformRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GhostButton"
+text = "左右翻转"
+
+[node name="RotateLeftButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/TransformRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GhostButton"
+text = "左转90°"
+
+[node name="RotateRightButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/TransformRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GhostButton"
+text = "右转90°"
+
+[node name="BreakRow" type="HBoxContainer" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BreakModeCheck" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/BreakRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GhostButton"
+toggle_mode = true
+text = "定时断开：关"
+
+[node name="PlaceBreakSpin" type="SpinBox" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/BreakRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 0)
+layout_mode = 2
+min_value = 1.0
+max_value = 60.0
+step = 0.5
+value = 1.0
+suffix = "秒"
+
+[node name="Separator" type="HSeparator" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+layout_mode = 2
+
+[node name="LoadTitle" type="Label" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 15
+text = "载入自制关卡"
+
+[node name="TemplatePicker" type="OptionButton" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+
+[node name="LoadTemplateButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+theme_type_variation = &"SecondaryButton"
+text = "载入所选"
+
+[node name="NewButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "新建空白环线"
+
+[node name="MotionPreviewCheck" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+toggle_mode = true
+text = "运动预览：关"
+
+[node name="PrefabToggle" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "v 放置预制体（障碍 / 乘客）"
+
+[node name="PrefabRow" type="HBoxContainer" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/PrefabRow"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 14
+text = "障碍选择"
+
+[node name="ObstaclePrefabOption" type="OptionButton" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/PrefabRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PlaceGrid" type="GridContainer" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 6
+theme_override_constants/v_separation = 6
+columns = 2
+
+[node name="PlaceObstacleButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/PlaceGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"SecondaryButton"
+text = "放置障碍"
+
+[node name="SetStartButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/PlaceGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GhostButton"
+text = "设置起点"
+
+[node name="SetFinishButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/LeftPanel/LeftScroll/LeftVBox/PlaceGrid"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GhostButton"
+text = "设置终点"
+
+[node name="CenterSpacer" type="Control" parent="UILayer/Root/ContentMargin/Workspace"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="RightPanel" type="PanelContainer" parent="UILayer/Root/ContentMargin/Workspace"]
+custom_minimum_size = Vector2(360, 0)
+layout_mode = 2
+theme_type_variation = &"PaperPanel"
+
+[node name="Scroll" type="ScrollContainer" parent="UILayer/Root/ContentMargin/Workspace/RightPanel"]
+layout_mode = 2
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+script = ExtResource("5_touch_scroll")
+
+[node name="RightVBox" type="VBoxContainer" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 7
+
+[node name="LevelToggle" type="Button" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "v 关卡设置"
+alignment = 0
+
+[node name="LevelTitleRow" type="HBoxContainer" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="Label" type="Label" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox/LevelTitleRow"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 14
+text = "关卡标题"
+
+[node name="LevelTitleEdit" type="LineEdit" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox/LevelTitleRow"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "24 字以内，最多 3 行..."
+max_length = 64
+
+[node name="SubtitleRow" type="HBoxContainer" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox/SubtitleRow"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 14
+text = "关卡简介"
+
+[node name="SubtitleEdit" type="TextEdit" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox/SubtitleRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "24 字以内，最多 3 行..."
+wrap_mode = 1
+
+[node name="LevelGrid" type="GridContainer" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 10
+theme_override_constants/v_separation = 7
+columns = 2
+
+[node name="Label" type="Label" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox/LevelGrid"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 14
+text = "关卡难度 ( 1 - 5 )"
+
+[node name="DifficultySpin" type="SpinBox" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox/LevelGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 1.0
+max_value = 5.0
+value = 1.0
+
+[node name="Label5" type="Label" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox/LevelGrid"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 14
+text = "通关时限 ( 0 = 无时限 )"
+
+[node name="ParSpin" type="SpinBox" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox/LevelGrid"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 3600.0
+rounded = true
+
+[node name="GridToggle" type="Button" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+toggle_mode = true
+text = "网格显示：关"
+
+[node name="CameraFitButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "缩放适配相机范围"
+
+[node name="CancelPlacementButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "取消放置模式"
+
+[node name="LevelStatsLabel" type="Label" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 13
+text = "轨道 0 px · 0 障碍 · 0 乘客"
+autowrap_mode = 2
+
+[node name="HistoryButtons" type="HBoxContainer" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="UndoButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox/HistoryButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GhostButton"
+text = "撤销操作"
+
+[node name="RedoButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox/HistoryButtons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GhostButton"
+text = "重做操作"
+
+[node name="FlipObjectButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "翻转当前选中对象"
+
+[node name="TrackDirectionButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "轨道前进方向：右"
+
+[node name="DeleteSelectionButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_type_variation = &"DangerButton"
+text = "删除当前选中对象"
+
+[node name="DeleteLevelButton" type="Button" parent="UILayer/Root/ContentMargin/Workspace/RightPanel/Scroll/RightVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_type_variation = &"DangerButton"
+text = "删除当前自制关卡"
+
+[node name="BottomBar" type="PanelContainer" parent="UILayer/Root"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 18.0
+offset_top = -52.0
+offset_right = -18.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_type_variation = &"HudPanel"
+
+[node name="HBox" type="HBoxContainer" parent="UILayer/Root/BottomBar"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="StatusLabel" type="Label" parent="UILayer/Root/BottomBar/HBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 14
+text = "准备就绪"
+
+[node name="HelpLabel" type="Label" parent="UILayer/Root/BottomBar/HBox"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 13
+text = "左键选择/拖动对象　·　右键平移　·　滚轮缩放"
+horizontal_alignment = 2

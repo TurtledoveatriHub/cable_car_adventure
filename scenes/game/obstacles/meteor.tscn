@@ -1,0 +1,78 @@
+[gd_scene load_steps=8 format=3 uid="uid://wiqefru3r6w0"]
+
+[ext_resource type="Script" uid="uid://3sptxkf8oldo" path="res://scripts/game/obstacles/obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://djpg2bdgffix" path="res://assets/visuals/obstacles/meteor.png" id="2_kr6d4"]
+[ext_resource type="Script" uid="uid://dlf7eh3i61at4" path="res://scripts/game/obstacles/meteor_trail.gd" id="3_trail"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gepka"]
+atlas = ExtResource("2_kr6d4")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hxca"]
+atlas = ExtResource("2_kr6d4")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gepka")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hxca")
+}],
+"loop": false,
+"name": &"move",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"off",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h3a1a"]
+radius = 78.0
+
+[node name="MeteorObstacle" type="Area2D" groups=["obstacles"]]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_script")
+prefab_id = "meteor"
+display_name = "陨石"
+obstacle_type = "crate"
+damage = 2
+movement_mode = 1
+end_offset = Vector2(-618, 4800)
+start_wait_time = 0.0
+end_wait_time = 0.0
+acceleration_time = 0.0
+deceleration_time = 0.0
+rotation_enabled = true
+rotation_speed = 180.0
+emitter_enabled = true
+emitter_interval_min = 16.0
+emitter_interval_max = 21.0
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.9, 0.828, 0.828, 1)
+sprite_frames = SubResource("SpriteFrames")
+animation = &"move"
+
+[node name="MeteorTrail" type="Node2D" parent="."]
+z_index = -1
+script = ExtResource("3_trail")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_h3a1a")

@@ -1,0 +1,120 @@
+[gd_scene load_steps=14 format=3 uid="uid://c3b45vw4etikd"]
+
+[ext_resource type="Script" uid="uid://3sptxkf8oldo" path="res://scripts/game/obstacles/obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bn3fc1qajr4qc" path="res://assets/visuals/obstacles/hot_air_balloon.png" id="2_iqja6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyjf6"]
+atlas = ExtResource("2_iqja6")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3l3h8"]
+atlas = ExtResource("2_iqja6")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dj1kj"]
+atlas = ExtResource("2_iqja6")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ae2lg"]
+atlas = ExtResource("2_iqja6")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofjby"]
+atlas = ExtResource("2_iqja6")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_odb01"]
+atlas = ExtResource("2_iqja6")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5f0u"]
+atlas = ExtResource("2_iqja6")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6c5sy"]
+atlas = ExtResource("2_iqja6")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyjf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3l3h8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dj1kj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ae2lg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofjby")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_odb01")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5f0u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6c5sy")
+}],
+"loop": true,
+"name": &"move",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"off",
+"speed": 4.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kdenj"]
+radius = 132.0
+height = 288.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3mfa5"]
+size = Vector2(60, 90)
+
+[node name="HotAirBalloonObstacle" type="Area2D" groups=["obstacles"]]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_script")
+prefab_id = "hot_air_balloon"
+display_name = "热气球"
+obstacle_type = "crate"
+movement_mode = 1
+move_speed_out = 160.0
+end_offset = Vector2(420, -3600)
+start_wait_time = 0.0
+end_wait_time = 0.0
+acceleration_time = 0.0
+deceleration_time = 0.0
+emitter_enabled = true
+emitter_interval_min = 9.0
+emitter_interval_max = 12.0
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames")
+animation = &"move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -74)
+shape = SubResource("CapsuleShape2D_kdenj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(0, 144)
+shape = SubResource("RectangleShape2D_3mfa5")

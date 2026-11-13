@@ -1,0 +1,387 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgsuupevu07yf"]
+
+[ext_resource type="Script" uid="uid://cbsths5ff3b7n" path="res://scripts/ui/main_menu.gd" id="1_menu"]
+[ext_resource type="Script" uid="uid://bs3a783qbdxjs" path="res://scripts/ui/sky_backdrop.gd" id="2_backdrop"]
+[ext_resource type="Script" uid="uid://ug82taavrecj" path="res://scripts/ui/level_preview.gd" id="3_preview"]
+[ext_resource type="Script" uid="uid://bhg53l3hyjndb" path="res://scripts/ui/pop_button.gd" id="4_pop"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_menu")
+
+[node name="BackdropLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="SkyBackdrop" type="Control" parent="BackdropLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_backdrop")
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_top = 28
+theme_override_constants/margin_right = 64
+theme_override_constants/margin_bottom = 24
+
+[node name="RootVBox" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="TopBar" type="HBoxContainer" parent="Content/RootVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Pill" type="PanelContainer" parent="Content/RootVBox/TopBar"]
+layout_mode = 2
+theme_type_variation = &"HudPanel"
+
+[node name="PillLabel" type="Label" parent="Content/RootVBox/TopBar/Pill"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+text = " Welcome to the Paradise  "
+
+[node name="Spacer" type="Control" parent="Content/RootVBox/TopBar"]
+custom_minimum_size = Vector2(460, 0)
+layout_mode = 2
+
+[node name="PlazaButton" type="Button" parent="Content/RootVBox/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 48)
+layout_mode = 2
+theme_type_variation = &"SecondaryButton"
+text = "关卡广场"
+script = ExtResource("4_pop")
+
+[node name="SettingsButton" type="Button" parent="Content/RootVBox/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "设置"
+theme_type_variation = &"IconButton"
+text = "设置"
+
+[node name="SoundButton" type="Button" parent="Content/RootVBox/TopBar"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+tooltip_text = "音乐开关"
+theme_type_variation = &"IconButton"
+text = "♪"
+
+[node name="Spacer2" type="Control" parent="Content/RootVBox/TopBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MainRow" type="HBoxContainer" parent="Content/RootVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 46
+alignment = 1
+
+[node name="LeftBlock" type="VBoxContainer" parent="Content/RootVBox/MainRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="Kicker" type="Label" parent="Content/RootVBox/MainRow/LeftBlock"]
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+theme_override_colors/font_color = Color(0.106, 0.196, 0.282, 0.7)
+theme_override_font_sizes/font_size = 18
+text = "2D ROLLER COASTER · CABLE CAR ADVENTURE"
+
+[node name="Title" type="Label" parent="Content/RootVBox/MainRow/LeftBlock"]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+theme_override_font_sizes/font_size = 92
+text = "缆车大冒险"
+
+[node name="EnglishTitle" type="Label" parent="Content/RootVBox/MainRow/LeftBlock"]
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+theme_override_colors/font_color = Color(0.949, 0.373, 0.361, 1)
+theme_override_colors/font_outline_color = Color(1, 0.965, 0.839, 1)
+theme_override_constants/outline_size = 7
+theme_override_font_sizes/font_size = 28
+text = "CABLE CAR ADVENTURE  /  载客抵达终点"
+
+[node name="Blurb" type="Label" parent="Content/RootVBox/MainRow/LeftBlock"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+theme_override_colors/font_color = Color(0.106, 0.196, 0.282, 1)
+theme_override_colors/font_outline_color = Color(1, 0.965, 0.839, 1)
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 21
+text = "操控小缆车沿着长长的轨道前进，躲开障碍，将乘客安全送至终点  !
+在关卡工坊自己设计关卡、上传广场，让其他玩家体验你的创造 ！"
+autowrap_mode = 2
+
+[node name="ButtonGap" type="Control" parent="Content/RootVBox/MainRow/LeftBlock"]
+custom_minimum_size = Vector2(0, 14)
+layout_mode = 2
+
+[node name="ButtonColumn" type="VBoxContainer" parent="Content/RootVBox/MainRow/LeftBlock"]
+custom_minimum_size = Vector2(430, 0)
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="SoloButton" type="Button" parent="Content/RootVBox/MainRow/LeftBlock/ButtonColumn"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(430, 58)
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+text = "单人冒险   →"
+script = ExtResource("4_pop")
+
+[node name="EditorButton" type="Button" parent="Content/RootVBox/MainRow/LeftBlock/ButtonColumn"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(430, 52)
+layout_mode = 2
+theme_type_variation = &"SecondaryButton"
+text = "关卡工坊 · 拼接自定义轨道"
+script = ExtResource("4_pop")
+
+[node name="SecondaryRow" type="HBoxContainer" parent="Content/RootVBox/MainRow/LeftBlock/ButtonColumn"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="DuoButton" type="Button" parent="Content/RootVBox/MainRow/LeftBlock/ButtonColumn/SecondaryRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GhostButton"
+text = "双人冒险"
+script = ExtResource("4_pop")
+
+[node name="AnalyticsButton" type="Button" parent="Content/RootVBox/MainRow/LeftBlock/ButtonColumn/SecondaryRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GhostButton"
+text = "个人主页"
+script = ExtResource("4_pop")
+
+[node name="LeaderboardButton" type="Button" parent="Content/RootVBox/MainRow/LeftBlock/ButtonColumn/SecondaryRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GhostButton"
+text = "排行榜单"
+script = ExtResource("4_pop")
+
+[node name="HowToButton" type="Button" parent="Content/RootVBox/MainRow/LeftBlock/ButtonColumn/SecondaryRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 46)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"GhostButton"
+text = "操作说明"
+script = ExtResource("4_pop")
+
+[node name="Hint" type="Label" parent="Content/RootVBox/MainRow/LeftBlock"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 16
+text = "← 刹车 / 后退　·　→ 加速前进　·　沿轨道冲向终点"
+
+[node name="RightCard" type="PanelContainer" parent="Content/RootVBox/MainRow"]
+custom_minimum_size = Vector2(420, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme_type_variation = &"PaperPanel"
+
+[node name="CardVBox" type="VBoxContainer" parent="Content/RootVBox/MainRow/RightCard"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="CardKicker" type="Label" parent="Content/RootVBox/MainRow/RightCard/CardVBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+text = "今日开放 · PARK STATUS"
+
+[node name="TrackCountLabel" type="Label" parent="Content/RootVBox/MainRow/RightCard/CardVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+theme_override_font_sizes/font_size = 34
+text = "5 条轨道"
+
+[node name="Preview" type="Control" parent="Content/RootVBox/MainRow/RightCard/CardVBox"]
+custom_minimum_size = Vector2(0, 180)
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("3_preview")
+accent = Color(1, 0.8235, 0.247, 1)
+
+[node name="Divider" type="ColorRect" parent="Content/RootVBox/MainRow/RightCard/CardVBox"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.106, 0.196, 0.282, 0.16)
+
+[node name="Stats" type="HBoxContainer" parent="Content/RootVBox/MainRow/RightCard/CardVBox"]
+custom_minimum_size = Vector2(0, 85)
+layout_mode = 2
+theme_override_constants/separation = 34
+
+[node name="ClearedBox" type="VBoxContainer" parent="Content/RootVBox/MainRow/RightCard/CardVBox/Stats"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Content/RootVBox/MainRow/RightCard/CardVBox/Stats/ClearedBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 15
+text = "已通关"
+
+[node name="ClearedLabel" type="Label" parent="Content/RootVBox/MainRow/RightCard/CardVBox/Stats/ClearedBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NumberLabel"
+theme_override_font_sizes/font_size = 30
+text = "0 / 5"
+
+[node name="StarsBox" type="VBoxContainer" parent="Content/RootVBox/MainRow/RightCard/CardVBox/Stats"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Content/RootVBox/MainRow/RightCard/CardVBox/Stats/StarsBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 15
+text = "收集星星"
+
+[node name="StarsLabel" type="Label" parent="Content/RootVBox/MainRow/RightCard/CardVBox/Stats/StarsBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NumberLabel"
+theme_override_font_sizes/font_size = 30
+text = "0 / 15"
+
+[node name="NextLevelLabel" type="Label" parent="Content/RootVBox/MainRow/RightCard/CardVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 40)
+layout_mode = 2
+theme_type_variation = &"BodyLabel"
+text = "下一站：晴空初旅 · 欢迎来到乐园"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="DuoNote" type="Label" parent="Content/RootVBox/MainRow/RightCard/CardVBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 15
+text = "关卡工坊：拼接轨道、放置障碍、设置起点终点，保存为自己的关卡！
+关卡广场：体验大家发布的关卡、上传自己设计的关卡！"
+
+[node name="Footer" type="HBoxContainer" parent="Content/RootVBox"]
+layout_mode = 2
+
+[node name="VersionLabel" type="Label" parent="Content/RootVBox/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 14
+
+[node name="Spacer" type="Control" parent="Content/RootVBox/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FooterNote" type="Label" parent="Content/RootVBox/Footer"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 14
+text = " 游 戏 版 本 ：  V  0 . 11 . 04 "
+horizontal_alignment = 2
+
+[node name="InfoOverlay" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Dim" type="ColorRect" parent="InfoOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04, 0.09, 0.14, 0.78)
+
+[node name="Center" type="CenterContainer" parent="InfoOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="PanelContainer" parent="InfoOverlay/Center"]
+custom_minimum_size = Vector2(720, 0)
+layout_mode = 2
+theme_type_variation = &"PaperPanel"
+
+[node name="VBox" type="VBoxContainer" parent="InfoOverlay/Center/Panel"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="InfoOverlay/Center/Panel/VBox"]
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+theme_override_font_sizes/font_size = 38
+text = "游戏说明"
+horizontal_alignment = 1
+
+[node name="Body" type="Label" parent="InfoOverlay/Center/Panel/VBox"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+theme_type_variation = &"BodyLabel"
+theme_override_font_sizes/font_size = 19
+text = "操作方式
+← 刹车 / 后退，→ 加速前进。
+
+游戏规则
+撞上障碍会掉落乘客，乘客归零、缆车掉出游戏外、超过游戏时间限制、都会立即挑战失败；
+安全抵达终点即通关，成绩先比丢失乘客数量，再比用时。
+
+关卡工坊
+在“关卡工坊”中可自由拼接轨道、放置各种障碍、设置起点和终点；
+再给自己的关卡命名、设置时间，手动通关一次后方可上传广场，审核通过后，你的关卡将可以让其他玩家体验；
+
+个人主页
+可自定义昵称，显示ID、主线进度、星星收藏、缆车收藏等各种信息；
+昵称与进度随本地存档保存。"
+autowrap_mode = 2
+
+[node name="CloseInfoButton" type="Button" parent="InfoOverlay/Center/Panel/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+text = "知道了，出发！"

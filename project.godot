@@ -1,0 +1,84 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="CableCarAdventure"
+config/description="CableCarAdventure 风格的 2D 单轨过山车闯关、关卡编辑器与行为数据分析项目。"
+config/version="2.0.0"
+run/main_scene="res://scenes/ui/main_menu.tscn"
+config/quit_on_go_back=false
+config/features=PackedStringArray("4.5", "GL Compatibility")
+config/icon="res://icon.png"
+
+[audio]
+
+buses/default_bus_layout="res://assets/audio/default_bus_layout.tres"
+
+[autoload]
+
+InputSetup="*res://scripts/autoload/input_setup.gd"
+PlatformConfig="*res://scripts/autoload/platform_config.gd"
+TouchUiBridge="*res://scripts/autoload/touch_ui_bridge.gd"
+UIJuice="*res://scripts/ui/ui_juice.gd"
+UITheme="*res://scripts/autoload/ui_theme.gd"
+BootCutscene="*res://scenes/ui/boot_cutscene.tscn"
+AudioDirector="*res://scripts/autoload/audio_director.gd"
+SaveManager="*res://scripts/autoload/save_manager.gd"
+LeaderboardService="*res://scripts/autoload/leaderboard_service.gd"
+LevelCatalog="*res://scripts/autoload/level_catalog.gd"
+ApiClient="*res://scripts/services/network/api_client.gd"
+CommunityService="*res://scripts/services/community/community_service.gd"
+DeveloperService="*res://scripts/autoload/developer_service.gd"
+VisualRegistry="*res://scripts/autoload/visual_registry.gd"
+TelemetryService="*res://scripts/autoload/telemetry_service.gd"
+AnalyticsService="*res://scripts/autoload/analytics_service.gd"
+AdaptiveDifficultyService="*res://scripts/autoload/adaptive_difficulty_service.gd"
+GameSession="*res://scripts/autoload/game_session.gd"
+SceneRouter="*res://scripts/autoload/scene_router.gd"
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+window/handheld/orientation=4
+
+[gui]
+
+theme/default_font_multichannel_signed_distance_field=true
+
+[internationalization]
+
+locale/fallback="zh_CN"
+
+[layer_names]
+
+2d_physics/layer_1="World"
+2d_physics/layer_2="Coaster"
+2d_physics/layer_3="Obstacle"
+2d_physics/layer_4="PassengerPickup"
+2d_physics/layer_5="FinishGate"
+2d_physics/layer_6="Touch"
+
+[physics]
+
+common/physics_interpolation=true
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"
+renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
+environment/defaults/default_clear_color=Color(0.23529412, 0.23529412, 0.25490198, 0.78431374)

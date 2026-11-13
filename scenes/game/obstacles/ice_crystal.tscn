@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=3 uid="uid://cphrk6mepg56a"]
+
+[ext_resource type="Script" uid="uid://3sptxkf8oldo" path="res://scripts/game/obstacles/obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dfuyd7u5wbilw" path="res://assets/visuals/obstacles/ice_crystal.png" id="2_4k6d5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8x0uk"]
+atlas = ExtResource("2_4k6d5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n3q6s"]
+atlas = ExtResource("2_4k6d5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8x0uk")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n3q6s")
+}],
+"loop": false,
+"name": &"move",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"off",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2bedj"]
+radius = 42.0
+
+[node name="IceCrystalObstacle" type="Area2D" groups=["obstacles"]]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_script")
+prefab_id = "ice_crystal"
+display_name = "冰晶"
+obstacle_type = "crate"
+movement_mode = 3
+move_speed_out = 200.0
+move_speed_back = 200.0
+end_offset = Vector2(-420, 0)
+start_wait_time = 0.0
+end_wait_time = 0.0
+acceleration_time = 0.0
+deceleration_time = 0.0
+rotation_enabled = true
+rotation_speed = 270.0
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_2bedj")

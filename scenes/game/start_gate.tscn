@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://diwolo2iqallr"]
+
+[ext_resource type="Script" uid="uid://bbvt858ee3jie" path="res://scripts/game/start_gate.gd" id="1_start"]
+[ext_resource type="Texture2D" uid="uid://ce24jphbvip8b" path="res://assets/visuals/generated/start_gate.png" id="2_kbpxn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30vq3"]
+atlas = ExtResource("2_kbpxn")
+region = Rect2(0, 0, 128, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjkr4"]
+atlas = ExtResource("2_kbpxn")
+region = Rect2(128, 0, 128, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_start"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30vq3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjkr4")
+}],
+"loop": true,
+"name": &"IDLE",
+"speed": 4.0
+}]
+
+[node name="StartGate" type="Node2D"]
+z_index = 5
+scale = Vector2(2, 2)
+script = ExtResource("1_start")
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(0, -20)
+sprite_frames = SubResource("SpriteFrames_start")
+animation = &"IDLE"
+autoplay = "IDLE"
+
+[node name="PassengerSpawn" type="Node2D" parent="."]
+editor_description = "开局乘客淡入位置"
+position = Vector2(0, 8)
+
+[node name="CartStart" type="Node2D" parent="."]
+editor_description = "游戏开始时缆车位置"
+position = Vector2(96, 0)

@@ -1,0 +1,84 @@
+[gd_scene load_steps=10 format=3 uid="uid://uyule17cam1v"]
+
+[ext_resource type="Script" uid="uid://gmwwmen064n1" path="res://scripts/game/finish_gate.gd" id="1_finish"]
+[ext_resource type="Texture2D" uid="uid://r316q6lqpxf3" path="res://assets/visuals/generated/finish_gate.png" id="2_03dsl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lk1ax"]
+atlas = ExtResource("2_03dsl")
+region = Rect2(256, 0, 128, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u12dk"]
+atlas = ExtResource("2_03dsl")
+region = Rect2(0, 0, 128, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vicig"]
+atlas = ExtResource("2_03dsl")
+region = Rect2(256, 0, 128, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rq2xt"]
+atlas = ExtResource("2_03dsl")
+region = Rect2(0, 0, 128, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2hc0"]
+atlas = ExtResource("2_03dsl")
+region = Rect2(128, 0, 128, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_finish"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lk1ax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u12dk")
+}],
+"loop": false,
+"name": &"MID",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vicig")
+}],
+"loop": true,
+"name": &"OFF",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rq2xt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c2hc0")
+}],
+"loop": true,
+"name": &"ON",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_finish"]
+resource_local_to_scene = true
+size = Vector2(72, 96)
+
+[node name="FinishGate" type="Area2D" groups=["finish_gates"]]
+z_index = 5
+scale = Vector2(2, 2)
+collision_layer = 16
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_finish")
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(0, -20)
+sprite_frames = SubResource("SpriteFrames_finish")
+animation = &"ON"
+autoplay = "OFF"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_finish")
+
+[node name="PassengerExit" type="Node2D" parent="."]
+editor_description = "终点乘客下车位置"
+position = Vector2(0, 12)

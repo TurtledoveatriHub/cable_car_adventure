@@ -1,0 +1,320 @@
+[gd_scene load_steps=4 format=3 uid="uid://crcifekp4uyuc"]
+
+[ext_resource type="Script" uid="uid://c0td248wojprm" path="res://scripts/ui/result_screen.gd" id="1_result"]
+[ext_resource type="Script" uid="uid://bs3a783qbdxjs" path="res://scripts/ui/sky_backdrop.gd" id="2_backdrop"]
+[ext_resource type="Script" uid="uid://bodiekmagtkie" path="res://scripts/ui/celebration_fx.gd" id="3_confetti"]
+
+[node name="Result" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_result")
+
+[node name="BackdropLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="SkyBackdrop" type="Control" parent="BackdropLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_backdrop")
+game_mode = true
+
+[node name="CelebrationFx" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_confetti")
+
+[node name="Center" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ResultPanel" type="PanelContainer" parent="Center"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+theme_type_variation = &"PaperPanel"
+scale = Vector2(0, 0)
+
+[node name="VBox" type="VBoxContainer" parent="Center/ResultPanel"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="Center/ResultPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"DisplayLabel"
+theme_override_font_sizes/font_size = 62
+text = "成功通关！"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="Center/ResultPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 18
+text = "晴空初旅　·　单人冒险"
+horizontal_alignment = 1
+
+[node name="WinnerLabel" type="Label" parent="Center/ResultPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SubheadingLabel"
+theme_override_colors/font_color = Color(0.949, 0.373, 0.361, 1)
+theme_override_font_sizes/font_size = 24
+text = "P1 获胜"
+horizontal_alignment = 1
+
+[node name="NewBestBadge" type="PanelContainer" parent="Center/ResultPanel/VBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"ToastPanel"
+
+[node name="Label" type="Label" parent="Center/ResultPanel/VBox/NewBestBadge"]
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+theme_override_font_sizes/font_size = 20
+text = "NEW RECORD · 新纪录！"
+
+[node name="SingleStats" type="HBoxContainer" parent="Center/ResultPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="PassengersCard" type="PanelContainer" parent="Center/ResultPanel/VBox/SingleStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CardPanel"
+
+[node name="VBox" type="VBoxContainer" parent="Center/ResultPanel/VBox/SingleStats/PassengersCard"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Center/ResultPanel/VBox/SingleStats/PassengersCard/VBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 15
+text = "丢失乘客"
+horizontal_alignment = 1
+
+[node name="PassengersValue" type="Label" parent="Center/ResultPanel/VBox/SingleStats/PassengersCard/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NumberLabel"
+theme_override_font_sizes/font_size = 38
+text = "3"
+horizontal_alignment = 1
+
+[node name="TimeCard" type="PanelContainer" parent="Center/ResultPanel/VBox/SingleStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CardPanel"
+
+[node name="VBox" type="VBoxContainer" parent="Center/ResultPanel/VBox/SingleStats/TimeCard"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Center/ResultPanel/VBox/SingleStats/TimeCard/VBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 15
+text = "通关用时"
+horizontal_alignment = 1
+
+[node name="TimeValue" type="Label" parent="Center/ResultPanel/VBox/SingleStats/TimeCard/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NumberLabel"
+theme_override_font_sizes/font_size = 32
+text = "00:42.35"
+horizontal_alignment = 1
+
+[node name="StarsCard" type="PanelContainer" parent="Center/ResultPanel/VBox/SingleStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CardPanel"
+
+[node name="VBox" type="VBoxContainer" parent="Center/ResultPanel/VBox/SingleStats/StarsCard"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Center/ResultPanel/VBox/SingleStats/StarsCard/VBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 15
+text = "本局评价"
+horizontal_alignment = 1
+
+[node name="StarsValue" type="Label" parent="Center/ResultPanel/VBox/SingleStats/StarsCard/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8235, 0.247, 1)
+theme_override_colors/font_outline_color = Color(0.106, 0.196, 0.282, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 34
+text = "★★★"
+horizontal_alignment = 1
+
+[node name="DuoStats" type="HBoxContainer" parent="Center/ResultPanel/VBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="P1Card" type="PanelContainer" parent="Center/ResultPanel/VBox/DuoStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CardPanel"
+
+[node name="VBox" type="VBoxContainer" parent="Center/ResultPanel/VBox/DuoStats/P1Card"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="P1Name" type="Label" parent="Center/ResultPanel/VBox/DuoStats/P1Card/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+theme_override_font_sizes/font_size = 25
+text = "玩家 1"
+horizontal_alignment = 1
+
+[node name="P1Result" type="Label" parent="Center/ResultPanel/VBox/DuoStats/P1Card/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SubheadingLabel"
+theme_override_font_sizes/font_size = 17
+text = "抵达终点"
+horizontal_alignment = 1
+
+[node name="P1Stats" type="Label" parent="Center/ResultPanel/VBox/DuoStats/P1Card/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BodyLabel"
+theme_override_font_sizes/font_size = 17
+text = "通关用时　·　00:42.35"
+horizontal_alignment = 1
+
+[node name="P1Stars" type="Label" parent="Center/ResultPanel/VBox/DuoStats/P1Card/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8235, 0.247, 1)
+theme_override_colors/font_outline_color = Color(0.106, 0.196, 0.282, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 26
+text = "★★★"
+horizontal_alignment = 1
+
+[node name="P2Card" type="PanelContainer" parent="Center/ResultPanel/VBox/DuoStats"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CardPanel"
+
+[node name="VBox" type="VBoxContainer" parent="Center/ResultPanel/VBox/DuoStats/P2Card"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="P2Name" type="Label" parent="Center/ResultPanel/VBox/DuoStats/P2Card/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+theme_override_font_sizes/font_size = 25
+text = "玩家 2"
+horizontal_alignment = 1
+
+[node name="P2Result" type="Label" parent="Center/ResultPanel/VBox/DuoStats/P2Card/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"SubheadingLabel"
+theme_override_font_sizes/font_size = 17
+text = "抵达终点"
+horizontal_alignment = 1
+
+[node name="P2Stats" type="Label" parent="Center/ResultPanel/VBox/DuoStats/P2Card/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BodyLabel"
+theme_override_font_sizes/font_size = 17
+text = "通关用时　·　00:44.10"
+horizontal_alignment = 1
+
+[node name="P2Stars" type="Label" parent="Center/ResultPanel/VBox/DuoStats/P2Card/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0.8235, 0.247, 1)
+theme_override_colors/font_outline_color = Color(0.106, 0.196, 0.282, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 26
+text = "★★★"
+horizontal_alignment = 1
+
+[node name="BestLabel" type="Label" parent="Center/ResultPanel/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"BodyLabel"
+theme_override_font_sizes/font_size = 17
+text = "本关最佳　0 位丢失乘客　·　00:42.35"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="Center/ResultPanel/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="NextButton" type="Button" parent="Center/ResultPanel/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 52)
+layout_mode = 2
+theme_type_variation = &"SecondaryButton"
+text = "下一关"
+
+[node name="RetryButton" type="Button" parent="Center/ResultPanel/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(180, 52)
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+text = "再跑一次"
+
+[node name="LevelsButton" type="Button" parent="Center/ResultPanel/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(150, 52)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "选择关卡"
+
+[node name="LeaderboardButton" type="Button" parent="Center/ResultPanel/VBox/Buttons"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 52)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "看排行榜"
+
+[node name="EditorButton" type="Button" parent="Center/ResultPanel/VBox/Buttons"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(150, 52)
+layout_mode = 2
+theme_type_variation = &"SecondaryButton"
+text = "返回工坊"
+
+[node name="FootHint" type="Label" parent="Center/ResultPanel/VBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 13
+text = "成绩已保存　·　Esc 返回选关"
+horizontal_alignment = 1

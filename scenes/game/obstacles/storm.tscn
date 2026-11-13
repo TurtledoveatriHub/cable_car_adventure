@@ -1,0 +1,108 @@
+[gd_scene load_steps=11 format=3 uid="uid://5hkqvlnrdobp"]
+
+[ext_resource type="Script" uid="uid://3sptxkf8oldo" path="res://scripts/game/obstacles/obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://drwynqk8bm8jd" path="res://assets/visuals/obstacles/stormA.png" id="2_so6sw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kvol4"]
+atlas = ExtResource("2_so6sw")
+region = Rect2(144, 0, 144, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3lytw"]
+atlas = ExtResource("2_so6sw")
+region = Rect2(288, 0, 144, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1q75"]
+atlas = ExtResource("2_so6sw")
+region = Rect2(432, 0, 144, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rs67t"]
+atlas = ExtResource("2_so6sw")
+region = Rect2(576, 0, 144, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uibbj"]
+atlas = ExtResource("2_so6sw")
+region = Rect2(0, 0, 144, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_so6sw"]
+atlas = ExtResource("2_so6sw")
+region = Rect2(0, 0, 144, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kvol4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3lytw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1q75")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rs67t")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uibbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uibbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uibbj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uibbj")
+}],
+"loop": false,
+"name": &"move",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so6sw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so6sw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so6sw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_so6sw")
+}],
+"loop": false,
+"name": &"off",
+"speed": 2.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_so6sw"]
+size = Vector2(46, 192)
+
+[node name="StormObstacle" type="Area2D" groups=["obstacles"]]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_script")
+prefab_id = "storm"
+display_name = "雷云"
+obstacle_type = "storm"
+move_speed_out = 240.0
+move_speed_back = 240.0
+interval_enabled = true
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames")
+animation = &"idle"
+frame = 3
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14)
+shape = SubResource("RectangleShape2D_so6sw")

@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://rwelrjlyq2mg"]
+
+[ext_resource type="Script" uid="uid://dvr8i5ij6il4e" path="res://scripts/game/duo_game_controller.gd" id="1_duo"]
+[ext_resource type="PackedScene" uid="uid://cdmp1kkqivytc" path="res://scenes/game/game.tscn" id="2_game"]
+[ext_resource type="PackedScene" uid="uid://du3mkroohgydx" path="res://scenes/game/game_hud.tscn" id="3_hud"]
+[ext_resource type="Script" uid="uid://dserq53xr5p65" path="res://scripts/game/duo_offscreen_markers.gd" id="4_marker"]
+
+[node name="DuoGame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_duo")
+
+[node name="Views" type="GridContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 2
+
+[node name="View1" type="SubViewportContainer" parent="Views"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport1" type="SubViewport" parent="Views/View1"]
+handle_input_locally = false
+size = Vector2i(638, 720)
+render_target_update_mode = 4
+
+[node name="Game1" parent="Views/View1/SubViewport1" instance=ExtResource("2_game")]
+unique_name_in_owner = true
+auto_route_to_result = false
+save_results = false
+input_prefix = "p1"
+hud_enabled = false
+handle_pause_input = false
+
+[node name="View2" type="SubViewportContainer" parent="Views"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+stretch = true
+
+[node name="SubViewport2" type="SubViewport" parent="Views/View2"]
+handle_input_locally = false
+size = Vector2i(638, 720)
+render_target_update_mode = 4
+
+[node name="Game2" parent="Views/View2/SubViewport2" instance=ExtResource("2_game")]
+unique_name_in_owner = true
+auto_route_to_result = false
+save_results = false
+input_prefix = "p2"
+hud_enabled = false
+handle_pause_input = false
+player_label = "玩家 2"
+
+[node name="MarkerOverlay" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("4_marker")
+
+[node name="HudLayer" type="CanvasLayer" parent="."]
+layer = 20
+
+[node name="SharedHUD" parent="HudLayer" instance=ExtResource("3_hud")]
+unique_name_in_owner = true

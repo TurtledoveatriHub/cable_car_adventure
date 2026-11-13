@@ -1,0 +1,864 @@
+{
+	"analytics_tags": [
+		"主线",
+		"空白环线"
+	],
+	"background_id": "dream",
+	"camera_bounds": {
+		"h": 1818.39990234375,
+		"w": 3714.13793945313,
+		"x": -196.394180297852,
+		"y": -425.577453613281
+	},
+	"custom": false,
+	"description": "开发者新建的空白环线，可在工坊中继续拼接。",
+	"difficulty": 2,
+	"id": "level_41",
+	"name": "重饰幻梦其二",
+	"obstacles": [
+		{
+			"flip_x": true,
+			"offset": {
+				"x": -27.4306640625,
+				"y": -31.0011367797852
+			},
+			"prefab": "dream_void",
+			"s": 3948.01677958423
+		},
+		{
+			"flip_x": false,
+			"offset": {
+				"x": 13.3943557739258,
+				"y": -19.4531860351563
+			},
+			"prefab": "dream_void",
+			"s": 13680.448205472
+		},
+		{
+			"flip_x": true,
+			"offset": {
+				"x": 3.3612060546875,
+				"y": -27.3612060546875
+			},
+			"prefab": "dream_void",
+			"s": 10116.0441820789
+		},
+		{
+			"flip_x": true,
+			"offset": {
+				"x": 0.0,
+				"y": -36.8223876953125
+			},
+			"prefab": "dream_void",
+			"s": 8297.54740527753
+		}
+	],
+	"par_time": 60.0,
+	"schema_version": 2,
+	"source": "builtin",
+	"subtitle": "虚空！",
+	"theme": {
+		"accent": "#ff8a5b",
+		"id": "sunset",
+		"mountain_far": "#c98f9b",
+		"mountain_near": "#75556f",
+		"sky_bottom": "#ffe6a7",
+		"sky_top": "#f7a072",
+		"tint": "#6f2d66",
+		"tint_alpha": 0.32,
+		"track": "#4a3048",
+		"track_highlight": "#f4d3b8"
+	},
+	"time_limit_seconds": 60.0,
+	"track": {
+		"finish_s": 8338.23245056267,
+		"pieces": [
+			{
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					0.0,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					240.0,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					480.0,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					720.0,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					960.0,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					1200.0,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"break_after": 1.0,
+				"direction": 1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					1440.0,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					1680.0,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"angle": -45.0,
+				"direction": 1.0,
+				"heading_deg": 0.0,
+				"origin": [
+					1920.0,
+					0.0
+				],
+				"radius": 152.78874536822,
+				"type": "arc"
+			},
+			{
+				"angle": -45.0,
+				"direction": 1.0,
+				"heading_deg": -45.0,
+				"origin": [
+					2028.03796386719,
+					-44.7507858276367
+				],
+				"radius": 152.78874536822,
+				"type": "arc"
+			},
+			{
+				"angle": -45.0,
+				"direction": 1.0,
+				"heading_deg": -90.0,
+				"origin": [
+					2072.78881835938,
+					-152.788757324219
+				],
+				"radius": 152.78874536822,
+				"type": "arc"
+			},
+			{
+				"angle": -45.0,
+				"direction": 1.0,
+				"heading_deg": -135.0,
+				"origin": [
+					2028.0380859375,
+					-260.82666015625
+				],
+				"radius": 152.78874536822,
+				"type": "arc"
+			},
+			{
+				"angle": 0.0,
+				"break_after": 1.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					1200.0,
+					180.0
+				],
+				"type": "straight"
+			},
+			{
+				"break_after": 1.0,
+				"direction": -1.0,
+				"direction_anchor": true,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					1440.0,
+					180.0
+				],
+				"type": "straight"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"origin": [
+					1680.0,
+					180.0
+				],
+				"radius": 152.78874536822,
+				"type": "arc"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": -45.0,
+				"origin": [
+					1788.03796386719,
+					135.249206542969
+				],
+				"radius": 152.78874536822,
+				"type": "arc"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": -90.0,
+				"origin": [
+					1832.78881835938,
+					27.2112426757813
+				],
+				"radius": 152.78874536822,
+				"type": "arc"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": -135.0,
+				"origin": [
+					1788.0380859375,
+					-80.8266754150391
+				],
+				"radius": 152.78874536822,
+				"type": "arc"
+			},
+			{
+				"angle": 0.0,
+				"break_after": 1.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					960.0,
+					360.0
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"break_after": 1.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					1200.0,
+					360.0
+				],
+				"type": "straight"
+			},
+			{
+				"break_after": 1.0,
+				"direction": -1.0,
+				"direction_anchor": true,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					1440.0,
+					360.0
+				],
+				"type": "straight"
+			},
+			{
+				"break_after": 1.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					1680.0,
+					360.0
+				],
+				"type": "straight"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"origin": [
+					1920.0,
+					360.0
+				],
+				"radius": 152.78874536822,
+				"type": "arc"
+			},
+			{
+				"angle": -45.0,
+				"direction": 1.0,
+				"heading_deg": 45.0,
+				"origin": [
+					2165.98095703125,
+					937.624633789063
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"direction": 1.0,
+				"direction_anchor": true,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					2220.0,
+					960.0
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					2460.0,
+					959.999938964844
+				],
+				"type": "straight"
+			},
+			{
+				"angle": -45.0,
+				"direction": 1.0,
+				"heading_deg": 0.0,
+				"origin": [
+					2700.0,
+					959.999938964844
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					3397.74365234375,
+					1272.82238769531
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					3157.74365234375,
+					1272.82238769531
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					2917.74365234375,
+					1272.82238769531
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					2677.74365234375,
+					1272.82238769531
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					2437.74365234375,
+					1272.82238769531
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					2197.74365234375,
+					1272.82238769531
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					1957.74353027344,
+					1272.82238769531
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 45.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"origin": [
+					1717.74353027344,
+					1272.82238769531
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -135.0,
+				"length": 240.0,
+				"origin": [
+					1663.724609375,
+					1250.44702148438
+				],
+				"type": "straight"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": -135.0,
+				"origin": [
+					1494.01892089844,
+					1080.74145507813
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					1440.0,
+					1058.36608886719
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					1200.0,
+					1058.36608886719
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					960.0,
+					1058.36608886719
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					720.0,
+					1058.36608886719
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					480.0,
+					1058.36608886719
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 45.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"origin": [
+					239.999938964844,
+					1058.36608886719
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": 45.0,
+				"direction": -1.0,
+				"heading_deg": -135.0,
+				"origin": [
+					185.980865478516,
+					1035.99072265625
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": 45.0,
+				"direction": -1.0,
+				"heading_deg": -90.0,
+				"origin": [
+					163.605560302734,
+					981.971740722656
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": 45.0,
+				"direction": -1.0,
+				"heading_deg": -45.0,
+				"origin": [
+					185.981018066406,
+					927.952758789063
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					240.0,
+					905.577392578125
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					480.0,
+					905.577392578125
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					720.0,
+					905.577392578125
+				],
+				"type": "straight"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"origin": [
+					960.000061035156,
+					905.577392578125
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": -45.0,
+				"origin": [
+					1014.01904296875,
+					883.202026367188
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": -90.0,
+				"origin": [
+					1036.39440917969,
+					829.183044433594
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": -135.0,
+				"origin": [
+					1014.01898193359,
+					775.1640625
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					960.0,
+					752.788696289063
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					720.0,
+					752.788696289063
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					480.0,
+					752.788696289063
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"length": 240.0,
+				"origin": [
+					240.0,
+					752.788696289063
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 45.0,
+				"direction": -1.0,
+				"heading_deg": -180.0,
+				"origin": [
+					-0.00006484985351562,
+					752.788696289063
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": 45.0,
+				"direction": -1.0,
+				"heading_deg": -135.0,
+				"origin": [
+					-54.0191383361816,
+					730.413330078125
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": 45.0,
+				"direction": -1.0,
+				"heading_deg": -90.0,
+				"origin": [
+					-76.3944396972656,
+					676.394348144531
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": 45.0,
+				"direction": -1.0,
+				"heading_deg": -45.0,
+				"origin": [
+					-54.0189781188965,
+					622.375366210938
+				],
+				"radius": 76.3943726841098,
+				"type": "arc"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					0.0,
+					600.0
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					240.0,
+					600.0
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					480.0,
+					600.0
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					720.0,
+					600.0
+				],
+				"type": "straight"
+			},
+			{
+				"direction": -1.0,
+				"direction_anchor": true,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					960.0,
+					600.0
+				],
+				"type": "straight"
+			},
+			{
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					1200.0,
+					600.0
+				],
+				"type": "straight"
+			},
+			{
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					1440.0,
+					600.0
+				],
+				"type": "straight"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": 0.0,
+				"origin": [
+					1680.00024414063,
+					600.0
+				],
+				"radius": 152.78874536822,
+				"type": "arc"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": -45.0,
+				"origin": [
+					1788.03820800781,
+					555.249206542969
+				],
+				"radius": 152.78874536822,
+				"type": "arc"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": -90.0,
+				"origin": [
+					1832.7890625,
+					447.211242675781
+				],
+				"radius": 152.78874536822,
+				"type": "arc"
+			},
+			{
+				"angle": -45.0,
+				"direction": -1.0,
+				"heading_deg": -135.0,
+				"origin": [
+					1788.03833007813,
+					339.17333984375
+				],
+				"radius": 152.78874536822,
+				"type": "arc"
+			}
+		],
+		"start_angle_deg": 0.0,
+		"start_s": 60.00000038147
+	}
+}

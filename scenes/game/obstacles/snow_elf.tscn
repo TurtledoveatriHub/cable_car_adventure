@@ -1,0 +1,169 @@
+[gd_scene load_steps=23 format=3 uid="uid://cxwjcandk7p57"]
+
+[ext_resource type="Script" uid="uid://3sptxkf8oldo" path="res://scripts/game/obstacles/obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bo72r4vk70loy" path="res://assets/visuals/obstacles/snow_elf.png" id="2_vrvjh"]
+[ext_resource type="Script" uid="uid://c46q8i5hnes2" path="res://scripts/game/obstacles/obstacle_bullet_emitter.gd" id="3_vrvjh"]
+[ext_resource type="PackedScene" uid="uid://bw12026po5bmx" path="res://scenes/game/obstacles/snow_elf_bullet.tscn" id="4_i5whi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5whi"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(0, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mfamt"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(80, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4nco"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(160, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujetg"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(240, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tt8ht"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(320, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m3f6x"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(400, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhe5o"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(480, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2cw4"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(0, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4gwdu"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(80, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lumqf"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(160, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iif76"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(240, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka71t"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(320, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_66xlg"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(400, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_co5yp"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(480, 0, 80, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_14j86"]
+atlas = ExtResource("2_vrvjh")
+region = Rect2(0, 0, 80, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5whi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mfamt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4nco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujetg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tt8ht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m3f6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhe5o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2cw4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4gwdu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lumqf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iif76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka71t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_66xlg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_co5yp")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_14j86")
+}],
+"loop": true,
+"name": &"off",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot2dg"]
+size = Vector2(36, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrvjh"]
+size = Vector2(860, 720)
+
+[node name="SnowElfObstacle" type="Area2D" groups=["obstacles"]]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_script")
+prefab_id = "snow_elf"
+display_name = "雪精灵"
+obstacle_type = "crate"
+end_offset = Vector2(0, 0)
+bullet_detection_enabled = true
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ot2dg")
+
+[node name="ObstacleBulletEmitter" type="Node2D" parent="."]
+script = ExtResource("3_vrvjh")
+bullet_scene = ExtResource("4_i5whi")
+scatter_deg = 6.0
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(80, 0)
+shape = SubResource("RectangleShape2D_vrvjh")

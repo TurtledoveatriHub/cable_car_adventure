@@ -1,0 +1,92 @@
+[gd_scene load_steps=10 format=3 uid="uid://bd0b2l4wvcphn"]
+
+[ext_resource type="Script" uid="uid://3sptxkf8oldo" path="res://scripts/game/obstacles/obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://d0vfyj7ddtgin" path="res://assets/visuals/obstacles/bird.png" id="2_vdr44"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4dxcw"]
+atlas = ExtResource("2_vdr44")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mo77b"]
+atlas = ExtResource("2_vdr44")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lgoy"]
+atlas = ExtResource("2_vdr44")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67ufi"]
+atlas = ExtResource("2_vdr44")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4dxcw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mo77b")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8lgoy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67ufi")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"off",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdr44"]
+size = Vector2(46, 82)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4dxcw"]
+size = Vector2(96, 128)
+
+[node name="BirdObstacle" type="Area2D" groups=["obstacles"]]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_script")
+prefab_id = "bird"
+display_name = "海鸥"
+movement_mode = 1
+move_speed_out = 360.0
+move_speed_back = 280.0
+end_offset = Vector2(-80, -280)
+end_wait_time = 0.3
+acceleration_time = 0.2
+deceleration_time = 0.3
+trigger_enabled = true
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_vdr44")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("RectangleShape2D_4dxcw")

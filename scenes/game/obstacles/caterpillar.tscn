@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://hj4e22mr8p4d"]
+
+[ext_resource type="Script" uid="uid://3sptxkf8oldo" path="res://scripts/game/obstacles/obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bujp88bteyffs" path="res://assets/visuals/obstacles/caterpillar.png" id="2_texture"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_texture")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_texture")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_texture")
+}],
+"loop": true,
+"name": &"off",
+"speed": 6.0
+}]
+
+[node name="CaterpillarObstacle" type="Area2D" groups=["obstacles"]]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_script")
+prefab_id = "caterpillar"
+display_name = "毛毛虫"
+obstacle_type = "caterpillar"
+rotation_enabled = true
+rotation_speed = 60.0
+rotate_collision = true
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames")
+animation = &"move"
+autoplay = "idle"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(155, -35, 123, -89, 57, -129, -10, -134, -66, -113, -123, -67, -141, -30, -151, 31, -128, 32, -118, -16, -98, -59, -64, -88, -2, -111, 56, -104, 104, -72, 135, -23)

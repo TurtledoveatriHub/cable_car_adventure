@@ -1,0 +1,412 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci7j827mti5qs"]
+
+[ext_resource type="Script" uid="uid://da5g8akrb1pef" path="res://scripts/ui/analytics_screen.gd" id="1_screen"]
+[ext_resource type="Script" uid="uid://bs3a783qbdxjs" path="res://scripts/ui/sky_backdrop.gd" id="2_backdrop"]
+
+[node name="Analytics" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_screen")
+
+[node name="BackdropLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="SkyBackdrop" type="Control" parent="BackdropLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_backdrop")
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 42
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 42
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 14
+
+[node name="Header" type="HBoxContainer" parent="Content/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="BackButton" type="Button" parent="Content/VBox/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(108, 44)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "← 返回"
+
+[node name="TitleBox" type="VBoxContainer" parent="Content/VBox/Header"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="Content/VBox/Header/TitleBox"]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+theme_override_font_sizes/font_size = 48
+text = "个人主页"
+
+[node name="Subtitle" type="Label" parent="Content/VBox/Header/TitleBox"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 15
+text = "你的轨道旅程、收藏与最佳记录"
+
+[node name="Spacer" type="Control" parent="Content/VBox/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfileBadge" type="Label" parent="Content/VBox/Header"]
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+theme_override_font_sizes/font_size = 15
+text = "本地档案"
+vertical_alignment = 1
+
+[node name="Main" type="HBoxContainer" parent="Content/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="ProfileCard" type="PanelContainer" parent="Content/VBox/Main"]
+custom_minimum_size = Vector2(392, 0)
+layout_mode = 2
+theme_type_variation = &"PaperPanel"
+
+[node name="ProfileMargin" type="MarginContainer" parent="Content/VBox/Main/ProfileCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 26
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 26
+theme_override_constants/margin_bottom = 22
+
+[node name="ProfileVBox" type="VBoxContainer" parent="Content/VBox/Main/ProfileCard/ProfileMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="AvatarPanel" type="PanelContainer" parent="Content/VBox/Main/ProfileCard/ProfileMargin/ProfileVBox"]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_type_variation = &"CardPanel"
+
+[node name="AvatarLabel" type="Label" parent="Content/VBox/Main/ProfileCard/ProfileMargin/ProfileVBox/AvatarPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NumberLabel"
+theme_override_font_sizes/font_size = 38
+text = "鸽"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerNameEdit" type="LineEdit" parent="Content/VBox/Main/ProfileCard/ProfileMargin/ProfileVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 44)
+layout_mode = 2
+placeholder_text = "输入昵称"
+alignment = 1
+max_length = 8
+
+[node name="EditNameButton" type="Button" parent="Content/VBox/Main/ProfileCard/ProfileMargin/ProfileVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "保存昵称"
+
+[node name="JoinedLabel" type="Label" parent="Content/VBox/Main/ProfileCard/ProfileMargin/ProfileVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 13
+text = "加入时间：—"
+horizontal_alignment = 1
+
+[node name="ProfileDivider" type="ColorRect" parent="Content/VBox/Main/ProfileCard/ProfileMargin/ProfileVBox"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.13, 0.2, 0.25, 0.14)
+
+[node name="ProfileCaption" type="Label" parent="Content/VBox/Main/ProfileCard/ProfileMargin/ProfileVBox"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 13
+text = "驾驶徽章"
+vertical_alignment = 1
+
+[node name="BadgeRow" type="HBoxContainer" parent="Content/VBox/Main/ProfileCard/ProfileMargin/ProfileVBox"]
+layout_mode = 2
+theme_override_constants/separation = 6
+
+[node name="BadgeMainline" type="Label" parent="Content/VBox/Main/ProfileCard/ProfileMargin/ProfileVBox/BadgeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 13
+text = "主线旅人"
+horizontal_alignment = 1
+
+[node name="BadgeStar" type="Label" parent="Content/VBox/Main/ProfileCard/ProfileMargin/ProfileVBox/BadgeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 13
+text = "星星收藏家"
+horizontal_alignment = 1
+
+[node name="BadgeCart" type="Label" parent="Content/VBox/Main/ProfileCard/ProfileMargin/ProfileVBox/BadgeRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 13
+text = "缆车鉴赏"
+horizontal_alignment = 1
+
+[node name="ProfileSpacer" type="Control" parent="Content/VBox/Main/ProfileCard/ProfileMargin/ProfileVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PlayerIdLabel" type="Label" parent="Content/VBox/Main/ProfileCard/ProfileMargin/ProfileVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 14
+text = "ID：SW-000000"
+
+[node name="Right" type="VBoxContainer" parent="Content/VBox/Main"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 12
+
+[node name="KpiRow" type="HBoxContainer" parent="Content/VBox/Main/Right"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="RunsCard" type="PanelContainer" parent="Content/VBox/Main/Right/KpiRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CardPanel"
+
+[node name="RunsVBox" type="VBoxContainer" parent="Content/VBox/Main/Right/KpiRow/RunsCard"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="RunsCaption" type="Label" parent="Content/VBox/Main/Right/KpiRow/RunsCard/RunsVBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 13
+text = "冒险次数"
+horizontal_alignment = 1
+
+[node name="TotalRunsValue" type="Label" parent="Content/VBox/Main/Right/KpiRow/RunsCard/RunsVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NumberLabel"
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+
+[node name="ClearCard" type="PanelContainer" parent="Content/VBox/Main/Right/KpiRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CardPanel"
+
+[node name="ClearVBox" type="VBoxContainer" parent="Content/VBox/Main/Right/KpiRow/ClearCard"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="ClearCaption" type="Label" parent="Content/VBox/Main/Right/KpiRow/ClearCard/ClearVBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 13
+text = "通关率"
+horizontal_alignment = 1
+
+[node name="CompletionRateValue" type="Label" parent="Content/VBox/Main/Right/KpiRow/ClearCard/ClearVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NumberLabel"
+theme_override_font_sizes/font_size = 28
+text = "0.0%"
+horizontal_alignment = 1
+
+[node name="LostCard" type="PanelContainer" parent="Content/VBox/Main/Right/KpiRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CardPanel"
+
+[node name="LostVBox" type="VBoxContainer" parent="Content/VBox/Main/Right/KpiRow/LostCard"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="LostCaption" type="Label" parent="Content/VBox/Main/Right/KpiRow/LostCard/LostVBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 13
+text = "平均丢失"
+horizontal_alignment = 1
+
+[node name="AvgPassengersValue" type="Label" parent="Content/VBox/Main/Right/KpiRow/LostCard/LostVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NumberLabel"
+theme_override_font_sizes/font_size = 28
+text = "0.0"
+horizontal_alignment = 1
+
+[node name="TimeCard" type="PanelContainer" parent="Content/VBox/Main/Right/KpiRow"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"CardPanel"
+
+[node name="TimeVBox" type="VBoxContainer" parent="Content/VBox/Main/Right/KpiRow/TimeCard"]
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="TimeCaption" type="Label" parent="Content/VBox/Main/Right/KpiRow/TimeCard/TimeVBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 13
+text = "平均用时"
+horizontal_alignment = 1
+
+[node name="AvgTimeValue" type="Label" parent="Content/VBox/Main/Right/KpiRow/TimeCard/TimeVBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"NumberLabel"
+theme_override_font_sizes/font_size = 24
+text = "00:00.00"
+horizontal_alignment = 1
+
+[node name="ProgressCard" type="PanelContainer" parent="Content/VBox/Main/Right"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"PaperPanel"
+
+[node name="ProgressMargin" type="MarginContainer" parent="Content/VBox/Main/Right/ProgressCard"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 18
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 16
+
+[node name="ProgressVBox" type="VBoxContainer" parent="Content/VBox/Main/Right/ProgressCard/ProgressMargin"]
+layout_mode = 2
+theme_override_constants/separation = 9
+
+[node name="ProgressTitle" type="Label" parent="Content/VBox/Main/Right/ProgressCard/ProgressMargin/ProgressVBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+theme_override_font_sizes/font_size = 24
+text = "收藏进度"
+
+[node name="MainlineProgressLabel" type="Label" parent="Content/VBox/Main/Right/ProgressCard/ProgressMargin/ProgressVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+theme_override_font_sizes/font_size = 18
+text = "主线关卡　0 / 5"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="StarsProfileLabel" type="Label" parent="Content/VBox/Main/Right/ProgressCard/ProgressMargin/ProgressVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+theme_override_font_sizes/font_size = 18
+text = "收集星星　0 / 15"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CartUnlockLabel" type="Label" parent="Content/VBox/Main/Right/ProgressCard/ProgressMargin/ProgressVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+theme_override_font_sizes/font_size = 18
+text = "解锁缆车　0 / 7"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CustomLevelsLabel" type="Label" parent="Content/VBox/Main/Right/ProgressCard/ProgressMargin/ProgressVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+theme_override_font_sizes/font_size = 18
+text = "自制关卡　0 张"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="CartProfileLabel" type="Label" parent="Content/VBox/Main/Right/ProgressCard/ProgressMargin/ProgressVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+theme_override_font_sizes/font_size = 18
+text = "常用缆车　小斑鸠"
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ProgressDivider" type="ColorRect" parent="Content/VBox/Main/Right/ProgressCard/ProgressMargin/ProgressVBox"]
+custom_minimum_size = Vector2(0, 2)
+layout_mode = 2
+color = Color(0.13, 0.2, 0.25, 0.14)
+
+[node name="RecentCaption" type="Label" parent="Content/VBox/Main/Right/ProgressCard/ProgressMargin/ProgressVBox"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 15
+text = "最近旅程"
+vertical_alignment = 1
+
+[node name="RecentLabel" type="Label" parent="Content/VBox/Main/Right/ProgressCard/ProgressMargin/ProgressVBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 3
+theme_type_variation = &"MutedLabel"
+theme_override_font_sizes/font_size = 15
+text = "还没有旅程记录。"
+autowrap_mode = 2
+
+[node name="Footer" type="HBoxContainer" parent="Content/VBox"]
+layout_mode = 2
+
+[node name="FooterHint" type="Label" parent="Content/VBox/Footer"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 12
+text = "昵称、进度与收藏会随本地存档保存"
+
+[node name="FooterSpacer" type="Control" parent="Content/VBox/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BackHint" type="Label" parent="Content/VBox/Footer"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 12
+text = "Esc 返回"
+horizontal_alignment = 2

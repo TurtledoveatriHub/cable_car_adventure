@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://bssdvi7wl3h54"]
+
+[ext_resource type="Script" uid="uid://3sptxkf8oldo" path="res://scripts/game/obstacles/obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://b8h4fjaf4op8h" path="res://assets/visuals/obstacles/flying_fish.png" id="2_ei2fb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tedn0"]
+atlas = ExtResource("2_ei2fb")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1g73"]
+atlas = ExtResource("2_ei2fb")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tedn0")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1g73")
+}],
+"loop": false,
+"name": &"move",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"off",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot2dg"]
+size = Vector2(56, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ei2fb"]
+size = Vector2(1600, 56)
+
+[node name="FlyingFishObstacle" type="Area2D" groups=["obstacles"]]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_script")
+prefab_id = "flying_fish"
+display_name = "飞鱼"
+obstacle_type = "crate"
+movement_mode = 1
+move_speed_out = 800.0
+move_speed_back = 600.0
+end_offset = Vector2(1600, 0)
+trigger_enabled = true
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames")
+animation = &"move"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("RectangleShape2D_ot2dg")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+position = Vector2(760, 4)
+shape = SubResource("RectangleShape2D_ei2fb")

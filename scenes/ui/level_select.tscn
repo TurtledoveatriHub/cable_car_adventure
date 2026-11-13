@@ -1,0 +1,223 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjncfqn3mhady"]
+
+[ext_resource type="Script" uid="uid://dco3bdd7l4cyn" path="res://scripts/ui/level_select.gd" id="1_select"]
+[ext_resource type="Script" uid="uid://bs3a783qbdxjs" path="res://scripts/ui/sky_backdrop.gd" id="2_backdrop"]
+[ext_resource type="Script" path="res://scripts/ui/touch_scroll.gd" id="3_scroll_touch"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_split"]
+
+[node name="LevelSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_select")
+
+[node name="BackdropLayer" type="CanvasLayer" parent="."]
+layer = -10
+
+[node name="SkyBackdrop" type="Control" parent="BackdropLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("2_backdrop")
+
+[node name="Content" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 46
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 46
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="Content"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Header" type="HBoxContainer" parent="Content/VBox"]
+layout_mode = 2
+theme_override_constants/separation = 18
+
+[node name="BackButton" type="Button" parent="Content/VBox/Header"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(112, 46)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "← 返回"
+
+[node name="TitleBox" type="VBoxContainer" parent="Content/VBox/Header"]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="Title" type="Label" parent="Content/VBox/Header/TitleBox"]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+theme_override_font_sizes/font_size = 52
+text = "选择关卡"
+horizontal_alignment = 1
+
+[node name="StatsLabel" type="Label" parent="Content/VBox/Header/TitleBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HudLabel"
+theme_override_font_sizes/font_size = 17
+text = "已通关 0 / 5　·　星星 0 / 15"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModePanel" type="PanelContainer" parent="Content/VBox/Header"]
+layout_mode = 2
+theme_type_variation = &"HudPanel"
+
+[node name="ModeRow" type="HBoxContainer" parent="Content/VBox/Header/ModePanel"]
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="AllButton" type="Button" parent="Content/VBox/Header/ModePanel/ModeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+toggle_mode = true
+button_pressed = true
+text = "主线"
+
+[node name="CustomButton" type="Button" parent="Content/VBox/Header/ModePanel/ModeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+toggle_mode = true
+text = "自制"
+
+[node name="UnlockAllButton" type="Button" parent="Content/VBox/Header/ModePanel/ModeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+tooltip_text = "正式上线前删除此按钮"
+theme_type_variation = &"GhostButton"
+toggle_mode = true
+text = "全解"
+
+[node name="ResetButton" type="Button" parent="Content/VBox/Header/ModePanel/ModeRow"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+text = "重置"
+
+[node name="DuoSettings" type="HBoxContainer" parent="Content/VBox"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="Content/VBox/DuoSettings"]
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 15
+text = "双人分屏"
+
+[node name="SideBySideButton" type="Button" parent="Content/VBox/DuoSettings"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_split")
+text = "左右分屏"
+
+[node name="StackedButton" type="Button" parent="Content/VBox/DuoSettings"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(120, 36)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_split")
+text = "上下分屏"
+
+[node name="SharedButton" type="Button" parent="Content/VBox/DuoSettings"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(94, 36)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_split")
+text = "不分屏"
+
+[node name="GhostCheck" type="Button" parent="Content/VBox/DuoSettings"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 36)
+layout_mode = 2
+theme_type_variation = &"GhostButton"
+toggle_mode = true
+button_pressed = true
+text = "显示对手残影"
+
+[node name="GridArea" type="MarginContainer" parent="Content/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 14
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 14
+theme_override_constants/margin_bottom = 14
+
+[node name="Scroll" type="ScrollContainer" parent="Content/VBox/GridArea"]
+script = ExtResource("3_scroll_touch")
+layout_mode = 2
+horizontal_scroll_mode = 0
+
+[node name="Grid" type="GridContainer" parent="Content/VBox/GridArea/Scroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 16
+theme_override_constants/v_separation = 12
+columns = 3
+
+[node name="Footer" type="HBoxContainer" parent="Content/VBox"]
+layout_mode = 2
+
+[node name="ModeHint" type="Label" parent="Content/VBox/Footer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HudSmallLabel"
+theme_override_font_sizes/font_size = 15
+text = "( ← / A  )  刹车后退　·　( → / D  )  加速前进　·　成绩写入本地最佳"
+
+[node name="Spacer2" type="Control" parent="Content/VBox/Footer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="EmptyLabel" type="Label" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -80.0
+offset_right = 300.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"HeadingLabel"
+theme_override_font_sizes/font_size = 24
+horizontal_alignment = 1
+vertical_alignment = 1

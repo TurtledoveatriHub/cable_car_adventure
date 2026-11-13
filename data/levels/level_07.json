@@ -1,0 +1,342 @@
+{
+	"analytics_tags": [
+		"主线",
+		"空白环线"
+	],
+	"background_id": "paradise",
+	"camera_bounds": {
+		"h": 1156.69360351563,
+		"w": 4512.15234375,
+		"x": -840.0,
+		"y": -1036.69360351563
+	},
+	"custom": false,
+	"description": "开发者新建的空白环线，可在工坊中继续拼接。",
+	"difficulty": 2,
+	"id": "level_07",
+	"name": "繁星乐园其二",
+	"obstacles": [
+		{
+			"flip_x": true,
+			"offset": {
+				"x": 0.0,
+				"y": -18.5374145507813
+			},
+			"prefab": "large_ferris_wheel",
+			"s": 10079.2595213737
+		},
+		{
+			"flip_x": true,
+			"offset": {
+				"x": 0.0,
+				"y": -18.5374145507813
+			},
+			"prefab": "large_ferris_wheel",
+			"s": 3359.75970472441
+		},
+		{
+			"flip_x": true,
+			"offset": {
+				"x": 0.0,
+				"y": -18.5374145507813
+			},
+			"prefab": "large_ferris_wheel",
+			"s": 11998.9783930667
+		},
+		{
+			"flip_x": false,
+			"offset": {
+				"x": 0.0,
+				"y": -54.34375
+			},
+			"prefab": "bird",
+			"s": 6244.18288969542
+		}
+	],
+	"par_time": 60.0,
+	"schema_version": 2,
+	"source": "builtin",
+	"subtitle": "旋转摩天轮！",
+	"theme": {
+		"accent": "#ffb703",
+		"id": "night",
+		"mountain_far": "#29465c",
+		"mountain_near": "#172d3b",
+		"sky_bottom": "#315c7a",
+		"sky_top": "#172a4f",
+		"tint": "#07152f",
+		"tint_alpha": 0.55,
+		"track": "#0d1b2a",
+		"track_highlight": "#8ecae6"
+	},
+	"time_limit_seconds": 180.0,
+	"track": {
+		"finish_s": 15646.4991238625,
+		"pieces": [
+			{
+				"angle": 0.0,
+				"direction": 1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					-720.0,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": 1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					-480.0,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"angle": 0.0,
+				"direction": 1.0,
+				"heading_deg": 0.0,
+				"length": 240.0,
+				"origin": [
+					-240.0,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": -360.0,
+				"length": 240.0,
+				"origin": [
+					0.00005245208740234,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"angle": -360.0,
+				"direction": 1.0,
+				"heading_deg": -360.0,
+				"origin": [
+					240.0,
+					0.00000000000005878
+				],
+				"radius": 305.577490736439,
+				"type": "loop"
+			},
+			{
+				"angle": -360.0,
+				"direction": 1.0,
+				"heading_deg": -720.0,
+				"origin": [
+					240.000061035156,
+					0.0
+				],
+				"radius": 152.78874536822,
+				"type": "loop"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": -1080.0,
+				"length": 240.0,
+				"origin": [
+					240.000091552734,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": -1080.0,
+				"length": 240.0,
+				"origin": [
+					480.000091552734,
+					0.00000000000017634
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": -1080.0,
+				"length": 240.0,
+				"origin": [
+					720.000122070313,
+					0.00000000000035268
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": -1080.0,
+				"length": 240.0,
+				"origin": [
+					960.000122070313,
+					0.00000000000052902
+				],
+				"type": "straight"
+			},
+			{
+				"angle": -360.0,
+				"direction": 1.0,
+				"heading_deg": -1080.0,
+				"origin": [
+					1200.00012207031,
+					0.00000000000070537
+				],
+				"radius": 458.366236104659,
+				"type": "loop"
+			},
+			{
+				"angle": -360.0,
+				"direction": 1.0,
+				"heading_deg": -1440.0,
+				"origin": [
+					1200.00024414063,
+					0.0
+				],
+				"radius": 305.577490736439,
+				"type": "loop"
+			},
+			{
+				"angle": -360.0,
+				"direction": 1.0,
+				"heading_deg": -1800.0,
+				"origin": [
+					1200.00024414063,
+					0.0
+				],
+				"radius": 152.78874536822,
+				"type": "loop"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": -2160.0,
+				"length": 240.0,
+				"origin": [
+					1200.00024414063,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": -2160.0,
+				"length": 240.0,
+				"origin": [
+					1440.00024414063,
+					0.00000000000035268
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": -2160.0,
+				"length": 240.0,
+				"origin": [
+					1680.00024414063,
+					0.00000000000070537
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": -2160.0,
+				"length": 240.0,
+				"origin": [
+					1920.00024414063,
+					0.00000000000105805
+				],
+				"type": "straight"
+			},
+			{
+				"angle": -360.0,
+				"direction": 1.0,
+				"heading_deg": -2160.0,
+				"origin": [
+					2160.00024414063,
+					0.00000000000141074
+				],
+				"radius": 152.78874536822,
+				"type": "loop"
+			},
+			{
+				"angle": -360.0,
+				"direction": 1.0,
+				"heading_deg": -2520.0,
+				"origin": [
+					2160.00024414063,
+					0.0
+				],
+				"radius": 305.577490736439,
+				"type": "loop"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": -2880.0,
+				"length": 240.0,
+				"origin": [
+					2160.00024414063,
+					0.0
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": -2880.0,
+				"length": 240.0,
+				"origin": [
+					2400.00024414063,
+					0.00000000000047024
+				],
+				"type": "straight"
+			},
+			{
+				"angle": -45.0,
+				"direction": 1.0,
+				"heading_deg": -2880.0,
+				"origin": [
+					2640.00024414063,
+					0.00000000000094049
+				],
+				"radius": 305.577490736439,
+				"type": "arc"
+			},
+			{
+				"angle": 45.0,
+				"direction": 1.0,
+				"heading_deg": -2925.0,
+				"origin": [
+					2856.076171875,
+					-89.5015716552734
+				],
+				"radius": 305.577490736439,
+				"type": "arc"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": -2880.0,
+				"length": 240.0,
+				"origin": [
+					3072.15209960938,
+					-179.003173828125
+				],
+				"type": "straight"
+			},
+			{
+				"direction": 1.0,
+				"heading_deg": -2880.0,
+				"length": 240.0,
+				"origin": [
+					3312.15209960938,
+					-179.003173828125
+				],
+				"type": "straight"
+			}
+		],
+		"start_angle_deg": 0.0,
+		"start_s": 180.0
+	}
+}

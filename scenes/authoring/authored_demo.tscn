@@ -1,0 +1,47 @@
+[gd_scene load_steps=9 format=3 uid="uid://dsc4ardd32a5"]
+
+[ext_resource type="Script" path="res://scripts/authoring/level_authoring_root.gd" id="1_root"]
+[ext_resource type="Script" path="res://scripts/data/track_piece_definition.gd" id="2_piece"]
+[ext_resource type="Script" path="res://scripts/authoring/obstacle_spawner.gd" id="3_spawner"]
+
+[sub_resource type="Resource" id="piece_1"]
+script = ExtResource("2_piece")
+length = 320.0
+
+[sub_resource type="Resource" id="piece_2"]
+script = ExtResource("2_piece")
+type = "arc"
+radius = 180.0
+angle_deg = -50.0
+
+[sub_resource type="Resource" id="piece_3"]
+script = ExtResource("2_piece")
+length = 280.0
+
+[sub_resource type="Resource" id="piece_4"]
+script = ExtResource("2_piece")
+type = "loop"
+radius = 82.0
+angle_deg = -360.0
+
+[sub_resource type="Resource" id="piece_5"]
+script = ExtResource("2_piece")
+length = 300.0
+
+[node name="AuthoredDemo" type="Node2D"]
+script = ExtResource("1_root")
+level_name = "编辑器环线 Demo"
+subtitle = "直接在 Godot 场景里放置轨道与障碍"
+finish_s = 1450.0
+track_pieces = [SubResource("piece_1"), SubResource("piece_2"), SubResource("piece_3"), SubResource("piece_4"), SubResource("piece_5")]
+
+[node name="BirdSpawner" type="Node2D" parent="."]
+position = Vector2(380, 0)
+script = ExtResource("3_spawner")
+track_s = 380.0
+
+[node name="StormSpawner" type="Node2D" parent="."]
+position = Vector2(920, 0)
+script = ExtResource("3_spawner")
+track_s = 920.0
+offset = Vector2(0, -20)

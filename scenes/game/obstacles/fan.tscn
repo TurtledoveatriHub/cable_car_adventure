@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://kaa776mtf32g"]
+
+[ext_resource type="Script" uid="uid://3sptxkf8oldo" path="res://scripts/game/obstacles/obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://dcdeyf8poyask" path="res://assets/visuals/obstacles/fan.png" id="2_texture"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_texture")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_texture")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_texture")
+}],
+"loop": true,
+"name": &"off",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_body"]
+radius = 30.0
+
+[node name="FanObstacle" type="Area2D" groups=["obstacles"]]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_script")
+prefab_id = "fan"
+display_name = "风车"
+obstacle_type = "fan"
+movement_mode = 2
+move_speed_out = 240.0
+move_speed_back = 240.0
+end_offset = Vector2(900, 0)
+start_wait_time = 0.0
+end_wait_time = 0.0
+acceleration_time = 0.8
+deceleration_time = 0.8
+wave_amplitude = 300.0
+wave_reverse_on_return = false
+rotation_enabled = true
+rotation_speed = 720.0
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_body")

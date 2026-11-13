@@ -1,0 +1,63 @@
+[gd_scene load_steps=5 format=3 uid="uid://cql5e1026vf0b"]
+
+[ext_resource type="Script" uid="uid://3sptxkf8oldo" path="res://scripts/game/obstacles/obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bboa6pruvns4l" path="res://assets/visuals/obstacles/crate.png" id="2_texture"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_texture")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_texture")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_texture")
+}],
+"loop": true,
+"name": &"off",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot2dg"]
+size = Vector2(62, 62)
+
+[node name="CrateObstacle" type="Area2D" groups=["obstacles"]]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_script")
+prefab_id = "crate"
+display_name = "木箱"
+obstacle_type = "crate"
+movement_mode = 1
+flip_by_motion = false
+move_speed_out = 600.0
+move_speed_back = 420.0
+end_offset = Vector2(0, -540)
+start_wait_time = 1.2
+end_wait_time = 0.2
+acceleration_time = 0.2
+deceleration_time = 0.3
+rotation_enabled = true
+no_rotation_at_start = true
+rotation_speed = 720.0
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ot2dg")

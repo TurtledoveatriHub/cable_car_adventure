@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://deorjccn50vd7"]
+
+[ext_resource type="Script" uid="uid://3sptxkf8oldo" path="res://scripts/game/obstacles/obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://bgf4fvewsy73k" path="res://assets/visuals/obstacles/cannonball.png" id="2_xix4h"]
+[ext_resource type="Script" uid="uid://c46q8i5hnes2" path="res://scripts/game/obstacles/obstacle_bullet_emitter.gd" id="3_xix4h"]
+[ext_resource type="PackedScene" uid="uid://b2bwt38q401hr" path="res://scenes/game/obstacles/cannonball_bullet.tscn" id="4_xix4h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dfnxq"]
+atlas = ExtResource("2_xix4h")
+region = Rect2(0, 0, 80, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6te8"]
+atlas = ExtResource("2_xix4h")
+region = Rect2(0, 0, 80, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dfnxq")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6te8")
+}],
+"loop": false,
+"name": &"move",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"off",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot2dg"]
+size = Vector2(56, 26)
+
+[node name="CannonballObstacle" type="Area2D" groups=["obstacles"]]
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_script")
+prefab_id = "cannonball"
+display_name = "炮弹"
+obstacle_type = "crate"
+movement_mode = 1
+move_speed_out = 210.0
+move_speed_back = 210.0
+end_offset = Vector2(0, -420)
+acceleration_time = 1.0
+deceleration_time = 1.0
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="ObstacleBulletEmitter" type="Node2D" parent="."]
+script = ExtResource("3_xix4h")
+bullet_scene = ExtResource("4_xix4h")
+bullet_count = 3
+spread_enabled = true
+scatter_deg = 10.0
+fixed_angle_deg = -30.0
+muzzle_offset = Vector2(24, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ot2dg")

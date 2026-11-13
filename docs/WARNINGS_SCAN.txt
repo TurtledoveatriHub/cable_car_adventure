@@ -1,0 +1,10 @@
+GDScript LSP scan
+=================
+FILES SCANNED: 89
+DIAGNOSTIC FILES: 0
+WARNINGS: 0
+ERRORS: 0
+
+Command:
+godot --headless --editor --path . --lsp-port 6017
+python tools/warn_scan.py 6017

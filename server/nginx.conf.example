@@ -1,0 +1,39 @@
+# /etc/nginx/sites-available/cablecar
+# 没有备案域名时先用公网 IP + 80 端口测试；正式小游戏必须换 HTTPS 域名。
+server {
+    listen 80;
+    server_name 8.134.212.65;
+
+    # 上传接口由后端精确限制关卡正文 2MB；这里留出 JSON 信封开销。
+    client_max_body_size 4m;
+
+    location /api/ {
+        proxy_pass http://127.0.0.1:3000;
+        proxy_http_version 1.1;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+
+    location /health {
+        proxy_pass http://127.0.0.1:3000/health;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+    }
+
+    # 远程资源：把 server/public/game 下的 wasm/pck 放这里。
+    location /game/ {
+        alias /opt/cablecar-server/public/game/;
+        add_header Cache-Control "public, max-age=3600";
+        types {
+            application/wasm wasm;
+            application/octet-stream pck br;
+        }
+    }
+
+    location / {
+        return 200 "cablecar server is running\n";
+        add_header Content-Type text/plain;
+    }
+}

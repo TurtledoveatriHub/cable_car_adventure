@@ -1,0 +1,115 @@
+[gd_scene load_steps=13 format=3 uid="uid://3efx3a1yl1nj"]
+
+[ext_resource type="Script" uid="uid://3sptxkf8oldo" path="res://scripts/game/obstacles/obstacle.gd" id="1_script"]
+[ext_resource type="Texture2D" uid="uid://brxxruuiid2b4" path="res://assets/visuals/obstacles/venus_flytrap.png" id="2_clw7h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_88njv"]
+atlas = ExtResource("2_clw7h")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b214b"]
+atlas = ExtResource("2_clw7h")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_paoyw"]
+atlas = ExtResource("2_clw7h")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkfry"]
+atlas = ExtResource("2_clw7h")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0c5xm"]
+atlas = ExtResource("2_clw7h")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kl51b"]
+atlas = ExtResource("2_clw7h")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e41rt"]
+atlas = ExtResource("2_clw7h")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_88njv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b214b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paoyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkfry")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_paoyw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fkfry")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0c5xm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kl51b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e41rt")
+}],
+"loop": true,
+"name": &"off",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ot2dg"]
+size = Vector2(66, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clw7h"]
+size = Vector2(82, 86)
+
+[node name="VenusFlytrapObstacle" type="Area2D" groups=["obstacles"]]
+scale = Vector2(2, 2)
+collision_layer = 4
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_script")
+prefab_id = "venus_flytrap"
+display_name = "捕蝇草"
+obstacle_type = "crate"
+trigger_mine = true
+
+[node name="Visual" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames")
+animation = &"idle"
+frame = 1
+frame_progress = 0.027597109
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_ot2dg")
+
+[node name="PlayerDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
+shape = SubResource("RectangleShape2D_clw7h")

@@ -1,0 +1,88 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5qokah5vbacw"]
+
+[ext_resource type="Script" uid="uid://d0w8ggch2g3d5" path="res://scripts/ui/cart_unlock_popup.gd" id="1_popup"]
+[ext_resource type="Script" path="res://scripts/ui/cart_preview.gd" id="2_preview"]
+[ext_resource type="Script" path="res://scripts/ui/touch_scroll.gd" id="3_scroll_touch"]
+
+[node name="CartUnlockPopup" type="PopupPanel"]
+oversampling_override = 1.0
+size = Vector2i(620, 560)
+visible = true
+script = ExtResource("1_popup")
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(600, 540)
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 616.0
+offset_bottom = 556.0
+theme_type_variation = &"PaperPanel"
+scale = Vector2(0, 0)
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 18
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Title" type="Label" parent="Panel/Margin/VBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"HeadingLabel"
+theme_override_font_sizes/font_size = 30
+text = "恭喜解锁新缆车！"
+horizontal_alignment = 1
+
+[node name="Scroll" type="ScrollContainer" parent="Panel/Margin/VBox"]
+script = ExtResource("3_scroll_touch")
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="Content" type="VBoxContainer" parent="Panel/Margin/VBox/Scroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="Icon" type="Control" parent="Panel/Margin/VBox/Scroll/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(140, 105)
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("2_preview")
+
+[node name="NameLabel" type="Label" parent="Panel/Margin/VBox/Scroll/Content"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+theme_override_font_sizes/font_size = 32
+text = "缆车"
+horizontal_alignment = 1
+
+[node name="Description" type="Label" parent="Panel/Margin/VBox/Scroll/Content"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_type_variation = &"BodyLabel"
+theme_override_font_sizes/font_size = 16
+text = "能力说明"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CloseButton" type="Button" parent="Panel/Margin/VBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 42)
+layout_mode = 2
+theme_type_variation = &"PrimaryButton"
+text = "关闭"
+
+[node name="Hint" type="Label" parent="Panel/Margin/VBox"]
+layout_mode = 2
+theme_type_variation = &"MutedLabel"
+text = "点击任意位置也可关闭"
+horizontal_alignment = 1
